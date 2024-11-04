@@ -1,10 +1,14 @@
 
-.header{
+.header {
     background-color: #1A4127;
-    display:flex;
-    justify-items:center;
+    display: flex;
+    justify-items: center;
     justify-content: center;
-
+    font-family: 'Roboto', sans-serif;
+    padding-left: 120px;
+    height: 56px;
+    width: 1500px;
+    padding-left: 62px;
 }
 .header__navbar{
 
@@ -83,13 +87,20 @@
 /*phần cuối header*/
 .bottom__header{
     background-color: var(--white-color);
-    margin-left: 55px;
+
+}
+.bottom__header-div {
+    margin-top: -18px;
+    height: 50px;
+    padding-left: 75px;
 }
 .bottom__header-list {
     list-style: none;
     display: flex;
     font-size: 1.8rem;
     margin-left: 5px;
+    padding-top: 20px;
+    font-family: 'Roboto','sans-serif';
 }
 .bottom__header-item{
     text-decoration: none;
@@ -181,9 +192,9 @@
     font-size: 2rem;
     background-color: var(--white-color);
     border-radius: 8px;
-    margin-left: 30px;
+    margin-left: 12px;
     height: 40px;
-    width:1084px;
+    width: 1085px;
 }
 .category-display__show{
     display: flex;
