@@ -1,4 +1,10 @@
 ﻿<style>
+    html {
+        font-size: 62.5%;
+        line-height: 1.6rem;
+        font-family: 'Roboto', 'sans-serif';
+        box-sizing: border-box;
+    }
     .header {
         background-color: #1A4127;
         display: flex;
@@ -35,7 +41,6 @@
     /*phần logo*/
     .header-logo-img {
         display: flex;
-        margin-left: 100px;
 
     }
     /*phần tìm kiếm*/
@@ -143,7 +148,7 @@
         display:flex;
         width:100%;
         background-color: white;
-        margin-top: 480px;
+        margin-top: 30px;
         height: 400px;
     }
     .logo {
@@ -196,6 +201,12 @@
         background-color: #526E3E;
         padding: 0px 15px;
     }
+    .grid {
+        width: 1280px;
+        max-width: 100%;
+        margin: 0 auto;
+        display:flex;
+    }
 
     
 </style>
@@ -215,36 +226,40 @@
 <body style="background-color: #F1F0EC; height: 1000px; ">
     @* top *@
     <div class="app">
+        
         <header class="header">
-            <div class="header-logo-img"><img class="img-fluid" src="https://cdn2491.cdn-template-4s.com/media/logo/logo.png"></div>
-            <nav class="header__navbar">
-                <ul class="header__navbar-list">
-                    <li class="header__navbar-item">
-                        <a href="#" class="header__navbar-item-link" style="font-size:20px;">Trang chủ</a>
-                    </li>
-                    <li class="header__navbar-item">
-                        <a href="#" class="header__navbar-item-link" style="font-size:20px";>Giới thiệu</a>
-                    </li>
-                    <li class="header__navbar-item">
-                        <a href="#" class="header__navbar-item-link" style="font-size:20px;">Sản phẩm</a>
-                    </li>
-                    <li class="header__navbar-item">
-                        <a href="#" class="header__navbar-item-link" style="font-size:20px;">Kiến thức</a>
-                    </li>
-                    <li class="header__navbar-item">
-                        <a href="#" class="header__navbar-item-link" style="font-size:20px;">Liên hệ</a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="header__search" >
-                <input type="search" name="search" placeholder="Từ khóa tìm kiếm" style="background-color:white">
-                <i class="fa-solid fa-magnifying-glass"></i>
+            <div class="grid">
+
+                <div class="header-logo-img"><img class="img-fluid" src="https://cdn2491.cdn-template-4s.com/media/logo/logo.png"></div>
+                <nav class="header__navbar">
+                    <ul class="header__navbar-list">
+                        <li class="header__navbar-item">
+                            <a href="#" class="header__navbar-item-link" style="font-size:20px;">Trang chủ</a>
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="#" class="header__navbar-item-link" style="font-size:20px" ;>Giới thiệu</a>
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="#" class="header__navbar-item-link" style="font-size:20px;">Sản phẩm</a>
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="#" class="header__navbar-item-link" style="font-size:20px;">Kiến thức</a>
+                        </li>
+                        <li class="header__navbar-item">
+                            <a href="#" class="header__navbar-item-link" style="font-size:20px;">Liên hệ</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header__search">
+                    <input type="search" name="search" placeholder="Từ khóa tìm kiếm" style="background-color:white">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="header__cart" style="font-size:20px;color:white">
+                    &nbsp;
+                    Đặt hàng
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
             </div>
-            <div class="header__cart" style="font-size:20px;color:white">
-                &nbsp;
-                Đặt hàng
-                <i class="fa-solid fa-cart-shopping"></i>
-        </div>
         </header>
         </div>
         @* top 1  *@
