@@ -1,10 +1,10 @@
 
-.header{
+.header {
     background-color: #1A4127;
-    display:flex;
-    justify-items:center;
+    display: flex;
+    justify-items: center;
     justify-content: center;
-
+    margin-left: -35px;
 }
 .header__navbar{
 

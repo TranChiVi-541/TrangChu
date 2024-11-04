@@ -185,6 +185,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\TrangChuLayout.cshtml" />
     <Content Include="Views\Home\Test1.cshtml" />
+    <Content Include="Views\Shared\MasterLayout.cshtml" />
     <Content Include="Views\Home\gioithieu.cshtml" />
     <Content Include="Views\Home\tintuc.cshtml" />
     <Content Include="Views\Home\sanpham.cshtml" />
