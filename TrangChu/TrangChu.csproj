@@ -184,12 +184,12 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\TrangChuLayout.cshtml" />
-    <Content Include="Views\Home\Test1.cshtml" />
-    <Content Include="Views\Shared\MasterLayout.cshtml" />
+    <Content Include="Views\Shared\GioiThieuLayout.cshtml" />
     <Content Include="Views\Home\gioithieu.cshtml" />
     <Content Include="Views\Home\tintuc.cshtml" />
     <Content Include="Views\Home\sanpham.cshtml" />
     <Content Include="Views\Home\chitietsp.cshtml" />
+    <Content Include="Views\Home\TrangChu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -26,7 +26,7 @@ namespace TrangChu.Controllers
 
             return View();
         }
-        public ActionResult Test1()
+        public ActionResult TrangChu()
         {
             return View();
         }
