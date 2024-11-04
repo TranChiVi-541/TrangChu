@@ -1,5 +1,1992 @@
 ﻿@{
-    Layout = "~/Views/Shared/TrangChuLayout.cshtml";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
 }
 
-<h1></h1>
+<style>
+    /*ảnh mở đầu*/
+    .introductory_photo {
+        height: 570px;
+        width: 1500px;
+        object-fit: contain;
+    }
+
+    /* Phần dưới ảnh mở đầu */
+    .body1 {
+        margin-top: 60px;
+        height: 645px;
+        width: 1500px;
+        display: flex;
+    }
+
+    .body1_left {
+        height: 645px;
+        width: 500px;
+        border-radius: 40px;
+        background-color: #fff;
+        margin-left: 150px;
+        margin-right: 10px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .body1_left_icon {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .body1_right {
+        height: 630px;
+        width: 690px;
+        right: 200px;
+    }
+
+    .body1_right_image {
+        height: 365px;
+        width: 650px;
+        right: 200px;
+        object-fit: contain;
+        margin-left: 20px;
+    }
+
+    .body1_right_list-option {
+        display: flex;
+        margin-left: -10px;
+        margin-right: -10px;
+        justify-content: space-between;
+        font-family: Arial;
+    }
+
+    .body1_right_item {
+        flex: 0 0 50%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .body1_right_info {
+        display: flex;
+        align-items: center;
+        background: #fff;
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 12px;
+    }
+
+    .body1_right_icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: #526E3E;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .body1_right_image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .body1_right_text {
+        flex: 1 1;
+        padding-left: 15px;
+    }
+
+    /*Phần viết text ở giữa trang*/
+    .text-center {
+        margin-bottom: 5px;
+        font-family: Arial;
+        font-size: 40px;
+        color: #1A4127;
+        font-weight: 700;
+        line-height: 1.4;
+        text-align: center;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+
+    /*Icon lá ở giữa trang*/
+    .icon-leaf-center {
+        height: 24px;
+        flex: 0 0 33px;
+        align-items: center;
+        margin-right: 15px;
+    }
+
+    .body2 {
+        height: 520px;
+        width: 1500px;
+        margin-bottom: 60px;
+    }
+
+    .body2_top {
+        margin-top: 50px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .body2_bottom {
+        height: 400px;
+        display: flex;
+    }
+
+    .body2_bottom_left {
+        height: 350px;
+        max-width: 41%;
+        margin-left: 120px;
+        margin-right: 10px;
+        flex-direction: column;
+        line-height: 1.4;
+        padding: 20px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .body2_bottom_right {
+        flex: 0 0 50%;
+        max-width: auto;
+        right: 200px;
+        object-fit: contain;
+    }
+
+    .body2_bottom_right_image {
+        height: 390px;
+        width: 590px;
+        background-color: #fff;
+        border-radius: 30px;
+    }
+
+    .body3 {
+        width: 85%;
+        background-color: #C2D1B0;
+        height: 675px;
+        object-fit: contain;
+        margin-bottom: 60px;
+        position: relative;
+        left: 110px;
+        border-radius: 20px;
+    }
+
+    .body3_container {
+        height: 540px;
+        width: 1205px;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+    }
+
+    .body3_row {
+        height: 500px;
+        width: 1185px;
+    }
+
+    .body3_top {
+        text-align: center;
+        margin-bottom: 30px;
+        margin: 20px;
+        margin-left: 75px;
+        top: 50px;
+    }
+
+    .body3_textcenter {
+        height: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 30px;
+    }
+
+    .body3_product {
+        height: 480px;
+        width: 1185px;
+        display: flex;
+    }
+
+    .body3_each_product {
+        height: 450px;
+        width: 278px;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto; /* Đảm bảo căn giữa trong carousel */
+        flex: 0 0 auto; /* Ngăn các sản phẩm co lại */
+        margin-right: 10px; /* Khoảng cách giữa các sản phẩm */
+        overflow: hidden;
+    }
+
+    .carousel-inner {
+        overflow: hidden; /* Giữ cho các sản phẩm nằm trong khung carousel */
+    }
+
+    .d-flex.flex-nowrap {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 10px;
+    }
+
+    .body4 {
+        width: 1500px;
+        height: 800px;
+        margin-bottom: 60px;
+    }
+
+    .body4_top {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .body4_icon_before {
+        position: absolute;
+        left: 0;
+        pointer-events: none;
+        z-index: -2;
+        top: 2650px;
+    }
+
+    .body4_container {
+        max-width: 1200px;
+        display: flex;
+        margin-left: 180px;
+    }
+
+    .body4_leftsb {
+        margin-right: 60px;
+        width: 400px;
+        height: 635px;
+    }
+
+    .body4_rightsb {
+        align-items: center;
+    }
+
+    .body4_rightsb_item {
+        background: #fff;
+        padding: 30px 20px;
+        border-radius: 25px;
+        height: 310px;
+        width: 350px;
+        margin-right: 15px;
+    }
+
+    .body4_rightsb_icon {
+        width: 83px;
+        height: 83px;
+        background: #7BAC77;
+        border-radius: 80%;
+        position: relative;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .body4_rightsb_icon_bf {
+        position: absolute;
+        bottom: 0;
+        right: -15px
+    }
+
+    .body4_rightsb_name {
+        font-weight: 700;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .body5 {
+        width: 1500px;
+        height: 550px;
+        margin-bottom: 60px;
+    }
+
+    .body5_top {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .body5_product {
+        width: 1140px;
+        height: 500px;
+        margin-left: 180px;
+        display: flex;
+    }
+
+    .product_item {
+        height: 450px;
+        width: 280px;
+        background-color: #fff;
+        align-items: center;
+        margin-right: 15px;
+    }
+
+    .inner_image {
+        width: 280px; /* Ảnh giãn hết chiều rộng của khung chứa */
+        height: 280px; /* Giữ nguyên tỷ lệ của ảnh */
+        object-fit: cover; /* Ảnh lấp đầy khung mà không bị biến dạng */
+        display: block; /* Đảm bảo ảnh không có khoảng trắng thừa */
+    }
+
+    .product_status {
+        position: absolute;
+        z-index: 11;
+        pointer-events: none;
+        background-color: red;
+        border-radius: 10px;
+        font-weight: 600;
+    }
+
+    .onsale {
+        max-width: 10rem;
+        display: block;
+        text-align: center;
+        color: #fff;
+        line-height: 2;
+        padding: 0 1rem;
+        margin-bottom: 0.5rem;
+        border-radius: 0.5rem;
+        height: 15px;
+    }
+
+    .inner_content {
+        padding: 5px;
+    }
+
+    .product_title {
+        margin-bottom: 20px;
+        font-weight: 500;
+        line-height: 1.2;
+        font-size: 15px;
+        font-weight: 700;
+        height: 40px;
+        padding: 15px;
+    }
+
+    .price {
+        margin-bottom: 10px;
+        font-weight: 700;
+        font-size: 18px;
+        height: 42px;
+        overflow: hidden;
+        padding: 10px;
+        margin-left: 5px;
+    }
+
+    .btn-product-action {
+        width: 252px;
+        display: flex;
+        border-radius: 8px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #526E3E;
+        color: #fff;
+        margin-left: 10px;
+        background-color: #526E3E;
+    }
+
+    .price_amount {
+        color: var(--color-highlight);
+        font-weight: 700;
+    }
+
+    .price-amount_old-price {
+        color: #8C8C8C;
+        margin-left: 55px;
+        position: relative;
+        font-weight: 400;
+        text-decoration: line-through;
+    }
+
+    .body6 {
+        width: 1500px;
+        height: 550px;
+        margin-bottom: 60px;
+    }
+
+    .body6_top {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .body6_product {
+        width: 1140px;
+        height: 430px;
+        margin-left: 180px;
+        display: flex;
+    }
+
+    .body7 {
+        width: 1500px;
+        height: 470px;
+        margin-bottom: 40px;
+    }
+
+    .body7_top {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .body7_bottom {
+        height: 350px;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+        overflow: hidden;
+    }
+
+    .swiper {
+        width: 600px;
+        height: 300px;
+    }
+
+    .body7_item {
+        width: 530px;
+        height: 240px;
+        padding: 30px;
+        background: #fff;
+        border-radius: 16px;
+        margin-left: 40px;
+    }
+
+    .body7_content {
+        display: flex;
+        align-items: center;
+    }
+
+    .body7_inter_img {
+        flex: 0 0 110px;
+        max-width: 110px;
+        text-align: center;
+    }
+
+    .body7_img {
+        margin-bottom: 10px;
+    }
+
+    .body7_note {
+        height: 48px;
+        width: 110px;
+    }
+
+    .body7_text {
+        height: 24px;
+        width: 110px;
+    }
+
+    .body7_inter-contect {
+        padding-left: 30px;
+    }
+
+    .body7_name {
+        font-weight: 700;
+        margin-bottom: 10px;
+        font-size: 20px;
+        color: #1A4127;
+    }
+
+    .body7_description {
+        text-align: justify;
+        max-height: 145px;
+    }
+
+    .body8 {
+        width: 1500px;
+        height: 470px;
+        margin-bottom: 60px;
+    }
+
+    .body8_top {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .body8_bottom {
+        height: 355px;
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+        justify-content: center;
+    }
+
+    .body8_bottom_inner_image {
+        width: 280px;
+        height: 210px;
+        position: relative;
+        z-index: 0;
+    }
+
+    .body8_bottom_article-item {
+        height: 345px;
+        width: 280px;
+        margin-right: 15px;
+        background-color: #fff;
+        border-radius: 10px;
+        z-index: 10;
+    }
+
+    .body9 {
+        width: 1500px;
+        height: 470px;
+        margin-bottom: 60px;
+    }
+
+    .body9_top {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .body9_bottom {
+        height: 100px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        object-fit: contain;
+        margin-left: 5px;
+        margin-right: auto;
+    }
+
+    .body9_item-img-brand {
+        background: #fff;
+        border-radius: 8px;
+        margin-right: 15px;
+        height: 88px;
+        width: 183px;
+    }
+</style>
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+</head>
+
+@*-->ảnh mở đầu*@
+<div class="introductory_photo">
+    <div class="swiper swiper-slider-main swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden" nh-swiper="{&quot;slidesPerView&quot;:1,&quot;lazy&quot;:true,&quot;autoplay&quot;:{&quot;delay&quot;:5000,&quot;disableOnInteraction&quot;:true,&quot;pauseOnMouseEnter&quot;:true},&quot;pagination&quot;:{&quot;el&quot;:&quot;.swiper-pagination&quot;,&quot;clickable&quot;:true},&quot;navigation&quot;:{&quot;nextEl&quot;:&quot;&quot;,&quot;prevEl&quot;:&quot;&quot;}}" style="height:570px;width:100%;">
+        <div class="swiper-wrapper" id="swiper-wrapper-3e0dbed109e09bd20" aria-live="off">
+            <div class="swiper-slide hjfghj swiper-slide-active" role="group" aria-label="1 / 1" style="width: 1534px;">
+                <img src="https://cdn2491.cdn-template-4s.com/media/san-pham/20240521-111145.jpg" class="img-fluid" alt="Lorem Ipsum">
+            </div>
+        </div>
+        <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal swiper-pagination-lock">
+            <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1" aria-current="true"></span>
+        </div>
+        <div class=" swiper-button-disabled swiper-button-lock" tabindex="-1" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-3e0dbed109e09bd20" aria-disabled="true">
+            <i class="fa-light fa-angle-right display-2"></i>
+        </div>
+        <div class=" swiper-button-disabled swiper-button-lock" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-3e0dbed109e09bd20" aria-disabled="true">
+            <i class="fa-light fa-angle-left display-2"></i>
+        </div>
+        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+    </div>
+</div>
+
+<body style="background-color: #F1F0EC; height: 6000px; width: 1500px; ">
+    <div>
+    </div>
+    @*-->giới thiệu sản phẩm*@
+
+    <div class="body1">
+        <div class="body1_left">
+            <span><img nh-lazy="image" class="img-fluid" alt="Câu Chuyện Về Thảo Mộc Thiên Nhiên" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/vector-1.svg" style=" margin-bottom: 35px; "></span>
+            <span style="font-size: 40px; color: #1A4127; font-weight: 700; margin-bottom: 25px; line-height: 1.4;"><b>Câu Chuyện Về Thảo Mộc Thiên Nhiên</b></span>
+            <span style="font-size: 20px; color: #233F28; line-height: 1.4; font-family: Arial;">Một trong những lý do dầu gội đầu thiên nhiên được ưa chuộng đó là tốt cho sức khỏe người dùng. Vì chứa các thành phần thân thiện với môi trường cho nên da đầu và tóc của bạn khỏe mạnh hơn. Còn dầu gội hóa học thông thường trên thị trường có thể loại bỏ bụi bẩn nhưng lại lấy đi lượng dầu tự nhiên trên da đầu và tóc. Mặc dù việc sử dụng loại dầu gội đầu hóa học sẽ làm mái tóc được làm sạch và mềm mại nhưng về lâu dài sẽ ảnh hưởng.</span>
+        </div>
+        <div class="body1_right">
+            <div class="body1_right_image">
+                <img nh-lazy="image" class="img-fluid" alt="Câu Chuyện Về Thảo Mộc Thiên Nhiên" src="https://cdn2491.cdn-template-4s.com/media/san-pham/banner-cc-1.png" style="">
+            </div>
+            <div class="body1_right_list-option">
+                <div style="flex-basis: 50%;">
+                    <div class="body1_right_item">
+                        <div class="body1_right_info">
+                            <div class="body1_right_icon">
+                                <img nh-lazy="image" class="img-fluid" alt="100%" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/herbal-spa-treatment-leaves1.png" style="">
+                            </div>
+                            <div class="body1_right_text">
+                                <div>
+                                    <span style="font-weight: 700; font-size: 20px; color: #526e3e;"><b>100%</b></span>
+                                </div>
+                                <div>
+                                    <span style="color: #526e3e;">Nguyên liệu tự nhiên</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="body1_right_item">
+                        <div class="body1_right_info">
+                            <div class="body1_right_icon">
+                                <img nh-lazy="image" class="img-fluid" alt="Quy trình" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/eco-friendly1.png" style="">
+                            </div>
+                            <div class="body1_right_text">
+                                <div>
+                                    <span style="font-weight: 700; font-size: 20px; color: #526e3e;"><b>Quy trình</b></span>
+                                </div>
+                                <div>
+                                    <span style="color: #526e3e;">Thu hoạch đúng quy trình</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div style="flex-basis: 50%;">
+                    <div class="body1_right_item">
+                        <div class="body1_right_info">
+                            <div class="body1_right_icon">
+                                <img nh-lazy="image" class="img-fluid" alt="Nơi trồng" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/ecology1.png" style="">
+                            </div>
+                            <div class="body1_right_text">
+                                <div>
+                                    <span style="font-weight: 700; font-size: 20px; color: #526e3e;"><b>Nơi trồng</b></span>
+                                </div>
+                                <div>
+                                    <span style="color: #526e3e;">Vườn Thảo dược lâu năm</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="body1_right_item">
+                        <div class="body1_right_info">
+                            <div class="body1_right_icon">
+                                <img nh-lazy="image" class="img-fluid" alt="100%" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/natural-ingredients1.png" style="">
+                            </div>
+                            <div class="body1_right_text">
+                                <div>
+                                    <span style="font-weight: 700; font-size: 20px; color: #526e3e;"><b>100%</b></span>
+                                </div>
+                                <div>
+                                    <span style="color: #526e3e;">Khách hàng tin dùng</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*---------------*@
+
+    @*-->Lợi ích bất ngờ khi sử dụng dầu gội thảo dược*@
+
+    <div class="body2">
+        <div class="body2_top">
+            <div class="text-center">
+                <span>Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược</span>
+            </div>
+            <div class="icon-leaf-center">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+            </div>
+        </div>
+
+        <div class="body2_bottom">
+            <div class="body2_bottom_left">
+                <span style="font-size: 27px; color: #1A4127; font-weight: 700; margin-bottom: 25px; line-height: 1.4; font-family: Arial;">THẢO DƯỢC TỰ NHIÊN CHĂM SÓC TÓC</span>
+                <div>
+                    <div style="margin-bottom:20px; display:flex;">
+                        <div style="flex: 0 0 33px; margin-right: 15px;">
+                            <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="">
+                        </div>
+                        <div style="font-size: 16px; font-family: Arial; box-sizing: border-box; color: #233F28;">Bồ kết và hà thủ ô là những loại thảo dược giàu dưỡng chất, giúp cung cấp dưỡng chất cần thiết cho tóc và da đầu, tăng cường độ dày và sức đề kháng của tóc</div>
+                    </div>
+
+                    <div style="margin-bottom:20px; display:flex;">
+                        <div style="flex: 0 0 33px; margin-right: 15px;">
+                            <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="">
+                        </div>
+                        <div style="font-size: 16px; font-family: Arial; box-sizing: border-box; color: #233F28;">Hà thủ ô điều trị vấn đề về mọc tóc hay tóc bạc sớm, giúp tóc đen và chắc khỏe hơn.</div>
+                    </div>
+
+                    <div style="margin-bottom:20px; display:flex;">
+                        <div style="flex: 0 0 33px; margin-right: 15px;">
+                            <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="">
+                        </div>
+                        <div style="font-size: 16px; font-family: Arial; box-sizing: border-box; color: #233F28;">Gừng giảm rụng tóc và thúc đẩy sự phát triển của tóc và ngăn ngừa gàu hiệu quả</div>
+                    </div>
+
+                    <div style="margin-bottom:20px; display:flex;">
+                        <div style="flex: 0 0 33px; margin-right: 15px;">
+                            <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="">
+                        </div>
+                        <div style="font-size: 16px; font-family: Arial; box-sizing: border-box; color: #233F28;">Chanh làm sáng tóc tự nhiên nhất, đặc biệt là màu tóc sáng hơn, tạo mái tóc sáng bóng hơn, giảm dầu và gàu trên da đầu.</div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="body2_bottom_right">
+                <div class="body2_bottom_right_image">
+                    <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/banner-002.png" style="">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="body3">
+        <div class="body3_top">
+            <br />
+            <br />
+            <div class="text-center">
+                <span>TOP SẢN PHẨM BÁN CHẠY</span>
+            </div>
+            <div class="icon-leaf-center">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+            </div>
+        </div>
+        <div class="body3_container">
+            <div class="body3_row">
+                <div class="body3_product">
+                    @* -->TOP SẢN PHẨM BÁN CHẠY *@
+
+                    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" style="overflow: hidden; left:30px;">
+                        <div class="carousel-inner">
+                            @*--> TRANG SAN PHAM DAU *@
+                            <div class="carousel-item active" data-bs-interval="5000">
+                                <div class="d-flex flex-nowrap overflow-auto" style="scroll-snap-type: x mandatory;">
+                                    <div class="body3_each_product" style="scroll-snap-align: start;">
+                                        <a href="" style="text-decoration:none;color:black;">
+                                            <div class="product_item">
+                                                <div class="inner_image">
+                                                    <div class="product_status" style="display:flex;align-items:center; margin:5px;">
+                                                        <span class="onsale" style="font-size:12px;">
+                                                            -17%
+                                                        </span>
+                                                    </div>
+                                                    <img nh-lazy="image" class="img-fluid" alt="DẦU GỘI XẢ BIOTIN COLLAGEN PASIORI TRỊ RỤNG VÀ PHỤC HỒI SIÊU MỀM MƯỢT 1000ML" src="https://cdn2491.cdn-template-4s.com/thumbs/san-pham/dau_goi/biotin_collagen_keratin_2_thumb_500.webp" style="">
+                                                </div>
+
+                                                <div class="inner_content">
+                                                    <h4 class="product_title">
+                                                        DẦU GỘI XẢ BIOTIN COLLAGEN PASIORI TRỊ RỤNG VÀ ...
+                                                    </h4>
+                                                    <div class="price">
+                                                        <span class="price_amount">
+                                                            250,000 Đ
+                                                        </span>
+                                                        <span class="price-amount_old-price">
+                                                            300,000 Đ
+                                                        </span>
+                                                    </div>
+                                                    <div class="btn-product-action">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M8.25 22.5C9.2165 22.5 10 21.7165 10 20.75C10 19.7835 9.2165 19 8.25 19C7.2835 19 6.5 19.7835 6.5 20.75C6.5 21.7165 7.2835 22.5 8.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M4.84 3.94L4.64 6.39C4.6 6.86 4.97 7.25 5.44 7.25H20.75C21.17 7.25 21.52 6.93 21.55 6.51C21.68 4.74 20.33 3.3 18.56 3.3H6.27C6.17 2.86 5.97 2.44 5.66 2.09C5.16 1.56 4.46 1.25 3.74 1.25H2C1.59 1.25 1.25 1.59 1.25 2C1.25 2.41 1.59 2.75 2 2.75H3.74C4.05 2.75 4.34 2.88 4.55 3.1C4.76 3.33 4.86 3.63 4.84 3.94Z" fill="white">
+                                                            </path>
+                                                            <path d="M20.51 8.75H5.16999C4.74999 8.75 4.40999 9.07 4.36999 9.48L4.00999 13.83C3.86999 15.54 5.20999 17 6.91999 17H18.04C19.54 17 20.86 15.77 20.97 14.27L21.3 9.6C21.34 9.14 20.98 8.75 20.51 8.75Z" fill="white">
+                                                            </path>
+                                                        </svg>
+                                                        <span style="margin-left:10px;">Thêm vào giỏ hàng</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="body3_each_product" style="scroll-snap-align: start;">
+                                        <a href="" style="text-decoration:none;color:black;">
+                                            <div class="product_item">
+                                                <div class="inner_image">
+                                                    <div class="product_status" style="display:flex;align-items:center; margin:5px;">
+                                                        <span class="onsale" style="font-size:12px;">
+                                                            -20%
+                                                        </span>
+                                                    </div>
+                                                    <img nh-lazy="image" class="img-fluid" alt="Dầu Gội Đầu Biotin Tím" src="https://cdn2491.cdn-template-4s.com/thumbs/san-pham/cauchuyenthaomoc/daugoixabiotin750ml1-1_thumb_500.webp" style="">
+                                                </div>
+
+                                                <div class="inner_content">
+                                                    <h4 class="product_title">
+                                                        Dầu Gội Đầu Biotin Tím
+                                                    </h4>
+                                                    <div class="price">
+                                                        <span class="price_amount">
+                                                            280,000 Đ
+                                                        </span>
+                                                        <span class="price-amount_old-price">
+                                                            350,000 Đ
+                                                        </span>
+                                                    </div>
+                                                    <div class="btn-product-action">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M8.25 22.5C9.2165 22.5 10 21.7165 10 20.75C10 19.7835 9.2165 19 8.25 19C7.2835 19 6.5 19.7835 6.5 20.75C6.5 21.7165 7.2835 22.5 8.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M4.84 3.94L4.64 6.39C4.6 6.86 4.97 7.25 5.44 7.25H20.75C21.17 7.25 21.52 6.93 21.55 6.51C21.68 4.74 20.33 3.3 18.56 3.3H6.27C6.17 2.86 5.97 2.44 5.66 2.09C5.16 1.56 4.46 1.25 3.74 1.25H2C1.59 1.25 1.25 1.59 1.25 2C1.25 2.41 1.59 2.75 2 2.75H3.74C4.05 2.75 4.34 2.88 4.55 3.1C4.76 3.33 4.86 3.63 4.84 3.94Z" fill="white">
+                                                            </path>
+                                                            <path d="M20.51 8.75H5.16999C4.74999 8.75 4.40999 9.07 4.36999 9.48L4.00999 13.83C3.86999 15.54 5.20999 17 6.91999 17H18.04C19.54 17 20.86 15.77 20.97 14.27L21.3 9.6C21.34 9.14 20.98 8.75 20.51 8.75Z" fill="white">
+                                                            </path>
+                                                        </svg>
+                                                        <span style="margin-left:10px;">Thêm vào giỏ hàng</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="body3_each_product" style="scroll-snap-align: start;">
+                                        <a href="" style="text-decoration:none;color:black;">
+                                            <div class="product_item">
+                                                <div class="inner_image">
+                                                    <div class="product_status" style="display:flex;align-items:center; margin:5px;">
+                                                        <span class="onsale" style="font-size:12px;">
+                                                            -20%
+                                                        </span>
+                                                    </div>
+                                                    <img nh-lazy="image" class="img-fluid" alt="Dầu gội đầu Davines Purifying Shampoo – 1000ml, trị gàu hiệu quả với tinh chất thảo dược" src="https://cdn2491.cdn-template-4s.com/thumbs/san-pham/cauchuyenthaomoc/daugoixabiotinvang500ml1-1_thumb_500.webp" style="">
+                                                </div>
+
+                                                <div class="inner_content">
+                                                    <h4 class="product_title">
+                                                        Dầu gội đầu Davines Purifying Shampoo – ...
+                                                    </h4>
+                                                    <div class="price">
+                                                        <span class="price_amount">
+                                                            280,000 Đ
+                                                        </span>
+                                                        <span class="price-amount_old-price">
+                                                            350,000 Đ
+                                                        </span>
+                                                    </div>
+                                                    <div class="btn-product-action">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M8.25 22.5C9.2165 22.5 10 21.7165 10 20.75C10 19.7835 9.2165 19 8.25 19C7.2835 19 6.5 19.7835 6.5 20.75C6.5 21.7165 7.2835 22.5 8.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M4.84 3.94L4.64 6.39C4.6 6.86 4.97 7.25 5.44 7.25H20.75C21.17 7.25 21.52 6.93 21.55 6.51C21.68 4.74 20.33 3.3 18.56 3.3H6.27C6.17 2.86 5.97 2.44 5.66 2.09C5.16 1.56 4.46 1.25 3.74 1.25H2C1.59 1.25 1.25 1.59 1.25 2C1.25 2.41 1.59 2.75 2 2.75H3.74C4.05 2.75 4.34 2.88 4.55 3.1C4.76 3.33 4.86 3.63 4.84 3.94Z" fill="white">
+                                                            </path>
+                                                            <path d="M20.51 8.75H5.16999C4.74999 8.75 4.40999 9.07 4.36999 9.48L4.00999 13.83C3.86999 15.54 5.20999 17 6.91999 17H18.04C19.54 17 20.86 15.77 20.97 14.27L21.3 9.6C21.34 9.14 20.98 8.75 20.51 8.75Z" fill="white">
+                                                            </path>
+                                                        </svg>
+                                                        <span style="margin-left:10px;">Thêm vào giỏ hàng</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="body3_each_product" style="scroll-snap-align: start;">
+                                        <a href="" style="text-decoration:none;color:black;">
+                                            <div class="product_item">
+                                                <div class="inner_image">
+                                                    <div class="product_status" style="display:flex;align-items:center; margin:5px;">
+                                                        <span class="onsale" style="font-size:12px;">
+                                                            -20%
+                                                        </span>
+                                                    </div>
+                                                    <img nh-lazy="image" class="img-fluid" alt="Dầu Gội Sạch Gàu Ngứa – Nấm Da Đầu Bong Tróc Antisol" src="https://cdn2491.cdn-template-4s.com/thumbs/san-pham/cauchuyenthaomoc/z4472778531836_a9ad401c2d522ba26ba1692f798a232b-min_thumb_500.webp" style="">
+                                                </div>
+
+                                                <div class="inner_content">
+                                                    <h4 class="product_title">
+                                                        Dầu Gội Sạch Gàu Ngứa – Nấm Da Đầu Bong Tróc ...
+                                                    </h4>
+                                                    <div class="price">
+                                                        <span class="price_amount">
+                                                            280,000 Đ
+                                                        </span>
+                                                        <span class="price-amount_old-price">
+                                                            350,000 Đ
+                                                        </span>
+                                                    </div>
+                                                    <div class="btn-product-action">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M8.25 22.5C9.2165 22.5 10 21.7165 10 20.75C10 19.7835 9.2165 19 8.25 19C7.2835 19 6.5 19.7835 6.5 20.75C6.5 21.7165 7.2835 22.5 8.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M4.84 3.94L4.64 6.39C4.6 6.86 4.97 7.25 5.44 7.25H20.75C21.17 7.25 21.52 6.93 21.55 6.51C21.68 4.74 20.33 3.3 18.56 3.3H6.27C6.17 2.86 5.97 2.44 5.66 2.09C5.16 1.56 4.46 1.25 3.74 1.25H2C1.59 1.25 1.25 1.59 1.25 2C1.25 2.41 1.59 2.75 2 2.75H3.74C4.05 2.75 4.34 2.88 4.55 3.1C4.76 3.33 4.86 3.63 4.84 3.94Z" fill="white">
+                                                            </path>
+                                                            <path d="M20.51 8.75H5.16999C4.74999 8.75 4.40999 9.07 4.36999 9.48L4.00999 13.83C3.86999 15.54 5.20999 17 6.91999 17H18.04C19.54 17 20.86 15.77 20.97 14.27L21.3 9.6C21.34 9.14 20.98 8.75 20.51 8.75Z" fill="white">
+                                                            </path>
+                                                        </svg>
+                                                        <span style="margin-left:10px;">Thêm vào giỏ hàng</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            @*--> TRANG SAN PHAM 2 *@
+                            <div class="carousel-item" data-bs-interval="5000">
+                                <div class="d-flex flex-nowrap overflow-auto" style="scroll-snap-type: x mandatory;">
+                                    <span class="body3_each_product" style="scroll-snap-align: start;">
+                                        <a href="" style="text-decoration:none;color:black;">
+                                            <div class="product_item">
+                                                <div class="inner_image">
+                                                    <div class="product_status" style="display:flex;align-items:center; margin:5px;">
+                                                        <span class="onsale" style="font-size:12px;">
+                                                            -20%
+                                                        </span>
+                                                    </div>
+                                                    <img nh-lazy="image" class="img-fluid" alt="Serum Chấm Mụn GUO – Acne Spot Treatment Serum GUO" src="https://cdn2491.cdn-template-4s.com/thumbs/san-pham/cauchuyenthaomoc/dau-tay-trang-tram-tra-guo-vo-moi_thumb_500.webp" style="">
+                                                </div>
+
+                                                <div class="inner_content">
+                                                    <h4 class="product_title">
+                                                        Serum Chấm Mụn GUO – Acne Spot Treatment Serum GUO
+                                                    </h4>
+                                                    <div class="price">
+                                                        <span class="price_amount">
+                                                            280,000 Đ
+                                                        </span>
+                                                        <span class="price-amount_old-price">
+                                                            350,000 Đ
+                                                        </span>
+                                                    </div>
+                                                    <div class="btn-product-action">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M8.25 22.5C9.2165 22.5 10 21.7165 10 20.75C10 19.7835 9.2165 19 8.25 19C7.2835 19 6.5 19.7835 6.5 20.75C6.5 21.7165 7.2835 22.5 8.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M4.84 3.94L4.64 6.39C4.6 6.86 4.97 7.25 5.44 7.25H20.75C21.17 7.25 21.52 6.93 21.55 6.51C21.68 4.74 20.33 3.3 18.56 3.3H6.27C6.17 2.86 5.97 2.44 5.66 2.09C5.16 1.56 4.46 1.25 3.74 1.25H2C1.59 1.25 1.25 1.59 1.25 2C1.25 2.41 1.59 2.75 2 2.75H3.74C4.05 2.75 4.34 2.88 4.55 3.1C4.76 3.33 4.86 3.63 4.84 3.94Z" fill="white">
+                                                            </path>
+                                                            <path d="M20.51 8.75H5.16999C4.74999 8.75 4.40999 9.07 4.36999 9.48L4.00999 13.83C3.86999 15.54 5.20999 17 6.91999 17H18.04C19.54 17 20.86 15.77 20.97 14.27L21.3 9.6C21.34 9.14 20.98 8.75 20.51 8.75Z" fill="white">
+                                                            </path>
+                                                        </svg>
+                                                        <span style="margin-left:10px;">Thêm vào giỏ hàng</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </span>
+
+                                    <div class="body3_each_product" style="scroll-snap-align: start;">
+                                        <a href="" style="text-decoration:none;color:black;">
+                                            <div class="product_item">
+                                                <div class="inner_image">
+                                                    <div class="product_status" style="display:flex;align-items:center; margin:5px;">
+                                                        <span class="onsale" style="font-size:12px;">
+                                                            -42%
+                                                        </span>
+                                                    </div>
+                                                    <img nh-lazy="image" class="img-fluid" alt="Nước Tẩy Trang B5 GUO – Calming Micellar Cleansing Water GUO sạch sâu, làm dịu da" src="https://cdn2491.cdn-template-4s.com/thumbs/san-pham/cauchuyenthaomoc/serum-duong-trang-guo-2024_thumb_500.webp" style="">
+                                                </div>
+
+                                                <div class="inner_content">
+                                                    <h4 class="product_title">
+                                                        Nước Tẩy Trang B5 GUO – Calming Micellar ...
+                                                    </h4>
+                                                    <div class="price">
+                                                        <span class="price_amount">
+                                                            260,000 Đ
+                                                        </span>
+                                                        <span class="price-amount_old-price">
+                                                            450,000 Đ
+                                                        </span>
+                                                    </div>
+                                                    <div class="btn-product-action">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M8.25 22.5C9.2165 22.5 10 21.7165 10 20.75C10 19.7835 9.2165 19 8.25 19C7.2835 19 6.5 19.7835 6.5 20.75C6.5 21.7165 7.2835 22.5 8.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M4.84 3.94L4.64 6.39C4.6 6.86 4.97 7.25 5.44 7.25H20.75C21.17 7.25 21.52 6.93 21.55 6.51C21.68 4.74 20.33 3.3 18.56 3.3H6.27C6.17 2.86 5.97 2.44 5.66 2.09C5.16 1.56 4.46 1.25 3.74 1.25H2C1.59 1.25 1.25 1.59 1.25 2C1.25 2.41 1.59 2.75 2 2.75H3.74C4.05 2.75 4.34 2.88 4.55 3.1C4.76 3.33 4.86 3.63 4.84 3.94Z" fill="white">
+                                                            </path>
+                                                            <path d="M20.51 8.75H5.16999C4.74999 8.75 4.40999 9.07 4.36999 9.48L4.00999 13.83C3.86999 15.54 5.20999 17 6.91999 17H18.04C19.54 17 20.86 15.77 20.97 14.27L21.3 9.6C21.34 9.14 20.98 8.75 20.51 8.75Z" fill="white">
+                                                            </path>
+                                                        </svg>
+                                                        <span style="margin-left:10px;">Thêm vào giỏ hàng</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="body3_each_product" style="scroll-snap-align: start;">
+                                        <a href="" style="text-decoration:none;color:black;">
+                                            <div class="product_item">
+                                                <div class="inner_image">
+                                                    <div class="product_status" style="display:flex;align-items:center; margin:5px;">
+                                                        <span class="onsale" style="font-size:12px;">
+                                                            -43%
+                                                        </span>
+                                                    </div>
+                                                    <img nh-lazy="image" class="img-fluid" alt="Dầu Tẩy Trang Tràm Trà GUO – Deep Cleansing Oil sạch sâu, ngừa mụn hiệu quả" src="https://cdn2491.cdn-template-4s.com/thumbs/san-pham/cauchuyenthaomoc/serum-duong-trang-da-guo-fullsize-30ml-700x700_thumb_500.webp" style="">
+                                                </div>
+
+                                                <div class="inner_content">
+                                                    <h4 class="product_title">
+                                                        Dầu Tẩy Trang Tràm Trà GUO – Deep Cleansing ...
+                                                    </h4>
+                                                    <div class="price">
+                                                        <span class="price_amount">
+                                                            200,000 Đ
+                                                        </span>
+                                                        <span class="price-amount_old-price">
+                                                            352,000 Đ
+                                                        </span>
+                                                    </div>
+                                                    <div class="btn-product-action">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M8.25 22.5C9.2165 22.5 10 21.7165 10 20.75C10 19.7835 9.2165 19 8.25 19C7.2835 19 6.5 19.7835 6.5 20.75C6.5 21.7165 7.2835 22.5 8.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M4.84 3.94L4.64 6.39C4.6 6.86 4.97 7.25 5.44 7.25H20.75C21.17 7.25 21.52 6.93 21.55 6.51C21.68 4.74 20.33 3.3 18.56 3.3H6.27C6.17 2.86 5.97 2.44 5.66 2.09C5.16 1.56 4.46 1.25 3.74 1.25H2C1.59 1.25 1.25 1.59 1.25 2C1.25 2.41 1.59 2.75 2 2.75H3.74C4.05 2.75 4.34 2.88 4.55 3.1C4.76 3.33 4.86 3.63 4.84 3.94Z" fill="white">
+                                                            </path>
+                                                            <path d="M20.51 8.75H5.16999C4.74999 8.75 4.40999 9.07 4.36999 9.48L4.00999 13.83C3.86999 15.54 5.20999 17 6.91999 17H18.04C19.54 17 20.86 15.77 20.97 14.27L21.3 9.6C21.34 9.14 20.98 8.75 20.51 8.75Z" fill="white">
+                                                            </path>
+                                                        </svg>
+                                                        <span style="margin-left:10px;">Thêm vào giỏ hàng</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="body3_each_product" style="scroll-snap-align: start;">
+                                        <a href="" style="text-decoration:none;color:black;">
+                                            <div class="product_item">
+                                                <div class="inner_image">
+                                                    <div class="product_status" style="display:flex;align-items:center; margin:5px;">
+                                                        <span class="onsale" style="font-size:12px;">
+                                                            -25%
+                                                        </span>
+                                                    </div>
+                                                    <img nh-lazy="image" class="img-fluid" alt="Toner Tràm Cúc GUO – Refresh Oil Control Toner GUO" src="https://cdn2491.cdn-template-4s.com/thumbs/san-pham/cauchuyenthaomoc/serum-tri-mun-acnes-treatment-guo-my-pham-xanh-sach_thumb_500.jpg" style="">
+                                                </div>
+
+                                                <div class="inner_content">
+                                                    <h4 class="product_title">
+                                                        Toner Tràm Cúc GUO – Refresh Oil Control Toner GUO
+                                                    </h4>
+                                                    <div class="price">
+                                                        <span class="price_amount">
+                                                            450,000 Đ
+                                                        </span>
+                                                        <span class="price-amount_old-price">
+                                                            600,000 Đ
+                                                        </span>
+                                                    </div>
+                                                    <div class="btn-product-action">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M8.25 22.5C9.2165 22.5 10 21.7165 10 20.75C10 19.7835 9.2165 19 8.25 19C7.2835 19 6.5 19.7835 6.5 20.75C6.5 21.7165 7.2835 22.5 8.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M4.84 3.94L4.64 6.39C4.6 6.86 4.97 7.25 5.44 7.25H20.75C21.17 7.25 21.52 6.93 21.55 6.51C21.68 4.74 20.33 3.3 18.56 3.3H6.27C6.17 2.86 5.97 2.44 5.66 2.09C5.16 1.56 4.46 1.25 3.74 1.25H2C1.59 1.25 1.25 1.59 1.25 2C1.25 2.41 1.59 2.75 2 2.75H3.74C4.05 2.75 4.34 2.88 4.55 3.1C4.76 3.33 4.86 3.63 4.84 3.94Z" fill="white">
+                                                            </path>
+                                                            <path d="M20.51 8.75H5.16999C4.74999 8.75 4.40999 9.07 4.36999 9.48L4.00999 13.83C3.86999 15.54 5.20999 17 6.91999 17H18.04C19.54 17 20.86 15.77 20.97 14.27L21.3 9.6C21.34 9.14 20.98 8.75 20.51 8.75Z" fill="white">
+                                                            </path>
+                                                        </svg>
+                                                        <span style="margin-left:10px;">Thêm vào giỏ hàng</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            @*--> TRANG SAN PHAM 3 *@
+                            <div class="carousel-item" data-bs-interval="5000">
+                                <div class="d-flex flex-nowrap overflow-auto" style="scroll-snap-type: x mandatory;">
+                                    <span class="body3_each_product" style="scroll-snap-align: start;">
+                                        <a href="" style="text-decoration:none;color:black;">
+                                            <div class="product_item">
+                                                <div class="inner_image">
+                                                    <div class="product_status" style="display:flex;align-items:center; margin:5px;">
+                                                        <span class="onsale" style="font-size:12px;">
+                                                            -25%
+                                                        </span>
+                                                    </div>
+                                                    <img nh-lazy="image" class="img-fluid" alt="Sữa Rửa Mặt Than Tre Tràm Trà GUO – Acne Solution Cleansing Cream GUO" src="https://cdn2491.cdn-template-4s.com/thumbs/san-pham/cauchuyenthaomoc/sua-rua-mat-than-tre-tram-tra-guo_thumb_500.webp" style="">
+                                                </div>
+                                                <div class="inner_content">
+                                                    <h4 class="product_title">
+                                                        Sữa Rửa Mặt Than Tre Tràm Trà GUO – Acne ...
+                                                    </h4>
+                                                    <div class="price">
+                                                        <span class="price_amount">
+                                                            150,000 Đ
+                                                        </span>
+                                                        <span class="price-amount_old-price">
+                                                            200,000 Đ
+                                                        </span>
+                                                    </div>
+                                                    <div class="btn-product-action">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M8.25 22.5C9.2165 22.5 10 21.7165 10 20.75C10 19.7835 9.2165 19 8.25 19C7.2835 19 6.5 19.7835 6.5 20.75C6.5 21.7165 7.2835 22.5 8.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M4.84 3.94L4.64 6.39C4.6 6.86 4.97 7.25 5.44 7.25H20.75C21.17 7.25 21.52 6.93 21.55 6.51C21.68 4.74 20.33 3.3 18.56 3.3H6.27C6.17 2.86 5.97 2.44 5.66 2.09C5.16 1.56 4.46 1.25 3.74 1.25H2C1.59 1.25 1.25 1.59 1.25 2C1.25 2.41 1.59 2.75 2 2.75H3.74C4.05 2.75 4.34 2.88 4.55 3.1C4.76 3.33 4.86 3.63 4.84 3.94Z" fill="white">
+                                                            </path>
+                                                            <path d="M20.51 8.75H5.16999C4.74999 8.75 4.40999 9.07 4.36999 9.48L4.00999 13.83C3.86999 15.54 5.20999 17 6.91999 17H18.04C19.54 17 20.86 15.77 20.97 14.27L21.3 9.6C21.34 9.14 20.98 8.75 20.51 8.75Z" fill="white">
+                                                            </path>
+                                                        </svg>
+                                                        <span style="margin-left:10px;">Thêm vào giỏ hàng</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </span>
+                                    <span class="body3_each_product" style="scroll-snap-align: start;">
+                                        <a href="" style="text-decoration:none;color:black;">
+                                            <div class="product_item">
+                                                <div class="inner_image">
+                                                    <img nh-lazy="image" class="img-fluid" alt="Dầu Gội Trị Rụng Tóc Anti-Hair Loss With White Lupin Fortifying Shampoo Sulfate" src="https://cdn2491.cdn-template-4s.com/thumbs/san-pham/thumb_hair_care-02_thumb_500.jpg" style="">
+                                                </div>
+
+                                                <div class="inner_content">
+                                                    <h4 class="product_title">
+                                                        Dầu Gội Trị Rụng Tóc Anti-Hair Loss With White ...
+                                                    </h4>
+                                                    <div class="price">
+                                                        <span class="price_amount">
+                                                            250,000 Đ
+                                                        </span>
+                                                    </div>
+                                                    <div class="btn-product-action">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M8.25 22.5C9.2165 22.5 10 21.7165 10 20.75C10 19.7835 9.2165 19 8.25 19C7.2835 19 6.5 19.7835 6.5 20.75C6.5 21.7165 7.2835 22.5 8.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M4.84 3.94L4.64 6.39C4.6 6.86 4.97 7.25 5.44 7.25H20.75C21.17 7.25 21.52 6.93 21.55 6.51C21.68 4.74 20.33 3.3 18.56 3.3H6.27C6.17 2.86 5.97 2.44 5.66 2.09C5.16 1.56 4.46 1.25 3.74 1.25H2C1.59 1.25 1.25 1.59 1.25 2C1.25 2.41 1.59 2.75 2 2.75H3.74C4.05 2.75 4.34 2.88 4.55 3.1C4.76 3.33 4.86 3.63 4.84 3.94Z" fill="white">
+                                                            </path>
+                                                            <path d="M20.51 8.75H5.16999C4.74999 8.75 4.40999 9.07 4.36999 9.48L4.00999 13.83C3.86999 15.54 5.20999 17 6.91999 17H18.04C19.54 17 20.86 15.77 20.97 14.27L21.3 9.6C21.34 9.14 20.98 8.75 20.51 8.75Z" fill="white">
+                                                            </path>
+                                                        </svg>
+                                                        <span style="margin-left:10px;">Thêm vào giỏ hàng</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </span>
+                                    <span class="body3_each_product" style="scroll-snap-align: start;">
+                                        <a href="" style="text-decoration:none;color:black;">
+                                            <div class="product_item">
+                                                <div class="inner_image">
+                                                    <img nh-lazy="image" class="img-fluid" alt="Bộ dầu gội &amp; kem xả thảo dược DANNGOC chăm sóc tóc hỗ trợ giảm rụng tóc, loại bỏ gàu, phục hồi tóc (1)" src="https://cdn2491.cdn-template-4s.com/thumbs/san-pham/vn-11134207-7r98o-lviuqde9jr7x39_thumb_500.jpg" style="height:260px;width:271px;">
+                                                </div>
+                                                <div class="inner_content">
+                                                    <h4 class="product_title">
+                                                        Bộ dầu gội & kem xả thảo dược DANNGOC chăm ...
+                                                    </h4>
+                                                    <div class="price">
+                                                        <span class="price_amount">
+                                                            230,000 Đ
+                                                        </span>
+                                                    </div>
+                                                    <div class="btn-product-action">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M8.25 22.5C9.2165 22.5 10 21.7165 10 20.75C10 19.7835 9.2165 19 8.25 19C7.2835 19 6.5 19.7835 6.5 20.75C6.5 21.7165 7.2835 22.5 8.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M4.84 3.94L4.64 6.39C4.6 6.86 4.97 7.25 5.44 7.25H20.75C21.17 7.25 21.52 6.93 21.55 6.51C21.68 4.74 20.33 3.3 18.56 3.3H6.27C6.17 2.86 5.97 2.44 5.66 2.09C5.16 1.56 4.46 1.25 3.74 1.25H2C1.59 1.25 1.25 1.59 1.25 2C1.25 2.41 1.59 2.75 2 2.75H3.74C4.05 2.75 4.34 2.88 4.55 3.1C4.76 3.33 4.86 3.63 4.84 3.94Z" fill="white">
+                                                            </path>
+                                                            <path d="M20.51 8.75H5.16999C4.74999 8.75 4.40999 9.07 4.36999 9.48L4.00999 13.83C3.86999 15.54 5.20999 17 6.91999 17H18.04C19.54 17 20.86 15.77 20.97 14.27L21.3 9.6C21.34 9.14 20.98 8.75 20.51 8.75Z" fill="white">
+                                                            </path>
+                                                        </svg>
+                                                        <span style="margin-left:10px;">Thêm vào giỏ hàng</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </span>
+                                    <span class="body3_each_product" style="scroll-snap-align: start;">
+                                        <a href="" style="text-decoration:none;color:black;">
+                                            <div class="product_item">
+                                                <div class="inner_image">
+                                                    <div class="product_status" style="display:flex;align-items:center; margin:5px;">
+                                                        <span class="onsale" style="font-size:12px;">
+                                                            -20%
+                                                        </span>
+                                                    </div>
+                                                    <img nh-lazy="image" class="img-fluid" alt="Kem xả thảo dược DANNGOC phục hồi tóc hư tổn giảm khô xơ, gãy rụng 220 gr (1)" src="https://cdn2491.cdn-template-4s.com/thumbs/san-pham/vn-11134207-7r98o-lvmxewjigvyy8d_thumb_500.jpg" style="height:260px;width:271px;">
+                                                </div>
+
+                                                <div class="inner_content">
+                                                    <h4 class="product_title">
+                                                        Kem xả thảo dược DANNGOC phục hồi tóc hư tổn ...
+                                                    </h4>
+                                                    <div class="price">
+                                                        <span class="price_amount">
+                                                            160,000 Đ
+                                                        </span>
+                                                        <span class="price-amount_old-price">
+                                                            200,000 Đ
+                                                        </span>
+                                                    </div>
+                                                    <div class="btn-product-action">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M8.25 22.5C9.2165 22.5 10 21.7165 10 20.75C10 19.7835 9.2165 19 8.25 19C7.2835 19 6.5 19.7835 6.5 20.75C6.5 21.7165 7.2835 22.5 8.25 22.5Z" fill="white">
+                                                            </path>
+                                                            <path d="M4.84 3.94L4.64 6.39C4.6 6.86 4.97 7.25 5.44 7.25H20.75C21.17 7.25 21.52 6.93 21.55 6.51C21.68 4.74 20.33 3.3 18.56 3.3H6.27C6.17 2.86 5.97 2.44 5.66 2.09C5.16 1.56 4.46 1.25 3.74 1.25H2C1.59 1.25 1.25 1.59 1.25 2C1.25 2.41 1.59 2.75 2 2.75H3.74C4.05 2.75 4.34 2.88 4.55 3.1C4.76 3.33 4.86 3.63 4.84 3.94Z" fill="white">
+                                                            </path>
+                                                            <path d="M20.51 8.75H5.16999C4.74999 8.75 4.40999 9.07 4.36999 9.48L4.00999 13.83C3.86999 15.54 5.20999 17 6.91999 17H18.04C19.54 17 20.86 15.77 20.97 14.27L21.3 9.6C21.34 9.14 20.98 8.75 20.51 8.75Z" fill="white">
+                                                            </path>
+                                                        </svg>
+                                                        <span style="margin-left:10px;">Thêm vào giỏ hàng</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" style="left:-110px;">
+                @*<span class="carousel-control-prev-icon" aria-hidden="true"></span>*@
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" style="left: 1210px;">
+                @*<span class="carousel-control-next-icon" aria-hidden="true"></span>*@
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="body4">
+        <div class="body4_top">
+            <div class="text-center">
+                <span>Lý Do Khách Hàng Tin Dùng Sản Phẩm</span>
+            </div>
+            <div class="icon-leaf-center">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+            </div>
+            <div class="body4_icon_before">
+                <div>
+                    <img nh-lazy="image" class="img-fluid" alt="Lý Do Khách Hàng Tin Dùng Sản Phẩm" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/banner-before0.png" style="">
+                </div>
+            </div>
+        </div>
+        <div class="body4_container">
+            <div class="body4_leftsb">
+                <div>
+                    <img nh-lazy="image" class="img-fluid" alt="Lý Do Khách Hàng Tin Dùng Sản Phẩm" src="https://cdn2491.cdn-template-4s.com/media/san-pham/banner-why8.png" style="">
+                </div>
+            </div>
+
+            <div class="body4_rightsb">
+
+                <div style="flex-basis: 50%;display:flex;margin-bottom:15px;">
+                    <div class="body4_rightsb_item">
+                        <div class="body4_rightsb_icon">
+                            <img nh-lazy="image" class="img-fluid" alt="AN TOÀN" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/ecology1.png" style="">
+                            <span class="body4_rightsb_icon_bf">
+                                <svg width="51" height="29" viewBox="0 0 51 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18.1841 28.3764C17.4481 27.6751 16.842 26.7984 16.3225 25.878C15.4132 24.3 14.6772 22.5904 13.8546 20.9686C13.768 20.7495 13.5948 20.5303 13.3783 20.4426C12.1661 19.8289 10.997 19.2153 9.74153 18.6893C9.04877 18.3824 8.31277 18.2948 7.57671 18.1633C7.44685 18.1195 7.23037 18.251 7.10044 18.3386C5.10887 19.3906 3.42035 20.8371 1.81842 22.4151C1.42875 22.8096 0.995794 23.248 0.606136 23.6425C0.47625 23.774 0.303068 23.8616 0.173181 23.9931C0.129885 23.9493 0.0432955 23.9055 0 23.9055C0.0865912 23.6425 0.173182 23.3356 0.303069 23.0726C1.12568 21.4508 2.46785 20.355 3.81 19.2592C4.15637 18.9961 4.45944 18.6893 4.8491 18.514C5.49853 18.2071 5.75831 17.6373 5.88819 16.936C6.06138 16.1031 6.36444 15.3141 6.49433 14.4813C6.53762 14.0868 6.40774 13.6485 6.23455 13.254C5.58512 11.7636 4.8491 10.3171 4.15637 8.87064C4.11308 8.78299 4.06978 8.69533 4.02649 8.56382C3.76671 7.90633 3.8966 7.20497 4.32955 6.85436C4.71921 6.5475 5.41194 6.50367 5.97478 6.98581C6.88396 7.73102 7.62002 8.56382 7.8365 9.79116C7.96636 10.5363 8.09629 11.3253 8.22616 12.1582C8.83229 11.5883 9.35181 11.0185 9.9147 10.5363C11.5599 9.04601 13.5082 8.21314 15.7596 8.257C16.1925 8.257 16.6255 8.38852 17.0584 8.60768C17.8811 9.00215 18.0109 9.70351 17.4048 10.361C16.2358 11.676 14.7638 12.4211 12.9887 12.2896C11.9929 12.2458 10.9538 12.202 9.95794 12.1582C9.56829 12.1582 9.35181 12.2458 9.09208 12.5526C8.05298 13.8676 7.01389 15.1388 6.84072 16.936C6.84072 17.0237 6.79741 17.1113 6.79741 17.2866C7.62002 16.936 8.35602 16.5415 9.13539 16.2784C11.0837 15.6648 13.032 15.1388 14.9803 14.569C15.2834 14.4813 15.6297 14.306 15.8462 14.0868C17.2749 12.6403 18.6604 11.1938 20.0458 9.79116C20.3922 9.48434 20.3922 9.17752 20.2623 8.73919C19.7861 7.20497 19.3098 5.62701 18.8768 4.04901C18.6171 3.12851 18.6171 2.16418 18.9202 1.24368C19.0933 0.586185 19.3964 0.104018 20.1324 0.0163526C20.8684 -0.071313 21.4746 0.191686 21.821 0.849183C22.5137 2.12035 22.9899 3.43534 22.9899 4.88184C22.9899 5.53934 22.9034 6.24067 22.8168 7.07353C23.2497 6.59133 23.6827 6.24067 23.9857 5.80233C25.2846 4.00518 27.0597 3.08468 29.2245 2.90935C30.3502 2.82168 31.0429 3.17234 31.3459 3.96134C31.5624 4.53118 31.5192 5.10101 31.1728 5.62701C30.3935 6.89816 29.1379 7.33649 27.7958 7.6433C26.1938 7.99398 24.5918 8.257 22.9899 8.60768C22.7301 8.65147 22.4271 8.78299 22.2539 8.95836C20.5654 10.6678 18.8769 12.4211 17.1883 14.2183C17.3615 14.2183 17.4914 14.2183 17.6646 14.2183C19.9593 14.1745 22.2106 14.1307 24.5053 14.043C24.7218 14.043 25.0248 13.8676 25.1114 13.6923C25.7176 12.6403 26.2804 11.5883 26.8432 10.4925C27.4061 9.39669 28.0988 8.47617 29.3111 8.08163C30.177 7.77481 30.8264 7.90633 31.3027 8.52003C31.7789 9.0898 31.7789 9.70351 31.3027 10.4925C30.3502 12.0705 29.008 13.254 27.3195 13.9991C27.103 14.0868 26.9298 14.1745 26.5835 14.306C27.1463 14.4375 27.5793 14.569 27.9689 14.7005C28.7049 14.9197 29.3977 15.1826 30.1337 15.4018C30.2636 15.4456 30.4801 15.4895 30.5666 15.4456C31.3027 15.0073 31.9954 14.5251 32.6881 14.0868C32.6881 13.0786 32.5582 11.8952 32.6881 10.7993C32.7747 9.83502 33.0778 8.87064 33.4674 7.95019C33.9437 6.72283 35.0694 6.2845 36.2816 6.24067C36.628 6.24067 37.1043 6.54751 37.364 6.8105C38.0568 7.6433 38.2733 8.65147 38.0135 9.7473C37.7104 10.887 37.1476 11.8513 36.4116 12.728C36.1951 12.991 35.9786 13.2101 35.7621 13.4732C35.7621 13.517 35.8054 13.6047 35.8054 13.6485C36.5847 13.5608 37.364 13.517 38.1 13.4293C38.1867 13.4293 38.2733 13.3417 38.3165 13.254C39.3556 11.8513 40.8277 11.1938 42.5162 10.9746C43.6852 10.8432 44.8542 10.7555 46.0232 10.7555C46.4994 10.7555 47.019 10.9746 47.4519 11.1938C48.491 11.8075 48.7075 13.1225 47.755 13.8676C47.1056 14.3936 46.283 14.7443 45.4603 14.9197C43.7285 15.2703 41.9534 15.3141 40.1782 14.9635C39.9185 14.9197 39.6154 14.8758 39.3556 14.7443C38.5763 14.306 37.797 14.306 36.9744 14.4813C35.4158 14.832 33.8571 15.1388 32.2985 15.4456C31.9954 15.4895 31.7357 15.6648 31.3459 15.8401C32.7315 16.4538 33.987 17.0237 35.2425 17.5496C36.2384 17.988 37.3207 18.3386 38.3165 18.7331C38.8794 18.9523 39.3989 18.8646 39.9618 18.6455C41.1308 18.1633 42.2997 17.6373 43.512 17.2866C45.8933 16.673 48.1014 17.3305 50.0929 18.6893C50.7424 19.1277 51.132 19.8289 50.9589 20.6618C50.7857 21.4946 50.1796 21.9768 49.4435 22.196C48.4477 22.5028 47.4519 22.6343 46.4128 22.3713C45.0274 21.9768 43.6419 21.4946 42.2997 21.0563C41.1741 20.7056 40.0917 20.3111 38.9227 20.0043C40.0051 21.2754 40.6112 22.7219 41.0009 24.3C41.0875 24.6944 41.1741 25.1328 41.1741 25.5273C41.1308 26.7984 39.9618 27.4998 38.966 26.7984C38.3165 26.3601 37.6238 25.7026 37.3207 24.9574C36.8445 23.8178 36.5847 22.5028 36.3249 21.2754C36.1518 20.4426 36.1518 19.6098 36.0652 18.7331C32.1253 17.199 28.3153 15.1826 23.9857 14.8758C23.9424 14.9635 23.8559 15.0073 23.8125 15.095C24.5485 15.6648 25.3279 16.1908 26.0639 16.7606C26.1505 16.8483 26.2804 16.8483 26.4103 16.8921C28.6616 17.1113 30.3935 18.2948 31.8655 20.0043C32.6448 20.9248 32.9046 21.9768 32.6881 23.2041C32.4284 24.7821 30.8264 25.4396 29.6575 24.3438C28.9214 23.6425 28.3153 22.7658 27.7958 21.9329C27.2329 21.0125 26.8 20.0043 26.2371 18.9085C26.367 20.4864 26.5402 21.8891 26.6267 23.3356C26.67 24.3 26.1938 25.1328 25.6309 25.878C24.8949 26.8861 23.6394 26.8423 22.9466 25.7903C22.124 24.5191 21.9075 23.1165 22.4704 21.67C23.0765 20.1796 23.5961 18.6016 24.765 17.4181C24.8516 17.3305 24.8083 16.8921 24.7218 16.8045C23.4662 15.7525 22.2539 14.832 20.4355 14.9635C16.7553 15.2265 13.1618 15.8401 9.69822 17.1552C9.48173 17.2428 9.30856 17.3305 9.04877 17.4181C10.0446 17.8127 10.9105 18.1633 11.8197 18.514C13.768 16.5853 16.106 15.9278 18.747 16.3223C19.6562 16.4538 20.5221 16.7606 20.9984 17.7249C21.5179 18.777 21.3447 19.7413 20.219 20.1358C19.4397 20.3988 18.6171 20.4426 17.7944 20.5303C17.3182 20.5742 16.842 20.4426 16.3225 20.355C15.8462 20.3111 15.4132 20.2235 14.8936 20.2673C15.1534 20.3988 15.3699 20.5303 15.6297 20.6618C18.0975 21.8891 20.0458 23.5986 21.0417 26.2724C21.2581 26.8423 21.388 27.3683 21.0849 27.9381C20.4788 29.1216 19.2232 29.3846 18.1841 28.3764ZM25.5011 18.9961C25.0248 20.1358 25.198 21.4946 24.7218 22.6782C24.6352 22.6782 24.5053 22.6343 24.4187 22.6343C24.462 21.5385 24.5053 20.4426 24.5485 19.3468C24.5053 19.3468 24.4187 19.303 24.3754 19.303C23.9424 20.4864 23.4229 21.6261 23.0765 22.8535C22.8168 23.7301 23.1631 24.563 23.6394 25.3081C24.0723 25.9656 24.7218 26.0095 25.1114 25.352C25.5011 24.7383 25.8907 24.0808 25.8907 23.3794C25.9774 21.9329 25.8041 20.4864 25.7609 19.04C25.6743 18.9961 25.5876 18.9961 25.5011 18.9961ZM27.4927 18.0756C28.3586 19.0838 29.2245 20.0043 30.0038 20.9248C30.177 21.1001 30.2203 21.3632 30.3068 21.5823C30.2203 21.6261 30.1337 21.67 30.0471 21.7576C29.2245 20.8371 28.4019 19.9605 27.5793 19.04C27.4927 19.0838 27.4493 19.1714 27.3628 19.2153C28.0555 20.355 28.7049 21.5385 29.441 22.6782C29.6142 22.985 29.9172 23.248 30.177 23.4672C30.8697 24.0369 31.4759 23.774 31.649 22.8973C31.7789 22.0644 31.6057 21.3193 31.0862 20.6179C30.2203 19.4783 28.9214 18.7331 27.4927 18.0756ZM39.0093 23.774C38.4898 22.6781 37.9702 21.5823 37.4074 20.5303C37.3207 20.5742 37.2775 20.5742 37.1909 20.6179C37.2342 21.9768 37.4939 23.2918 38.1 24.4753C38.3598 25.0451 38.8361 25.4834 39.2691 25.9218C39.3989 26.0533 39.7886 26.1409 39.9185 26.0533C40.0917 25.9218 40.2215 25.5712 40.1782 25.3958C39.9185 24.3876 39.5721 23.3356 39.2258 22.3275C39.0959 21.9329 38.7928 21.5823 38.5763 21.2316C38.7495 22.0644 39.3989 22.7658 39.0093 23.774ZM41.5637 18.9085C42.9925 19.2592 44.5511 18.9961 45.8933 19.8289C44.5078 19.7851 43.1224 19.7851 41.6503 19.7413C41.8668 19.8728 41.9534 19.9605 42.0399 20.0043C43.6852 20.5303 45.2872 21.1001 46.9324 21.4946C47.6251 21.67 48.3611 21.4508 49.0971 21.3632C49.5734 21.2754 50.0064 21.0563 50.0929 20.5303C50.2228 19.9605 49.8331 19.6098 49.4002 19.3468C48.058 18.4263 46.586 18.0318 45.0274 18.0318C43.8151 17.9441 42.6894 18.4263 41.5637 18.9085ZM33.7705 13.3855C34.2901 12.1143 34.8529 10.8432 35.3725 9.61585C35.459 9.65965 35.5456 9.70351 35.6323 9.7473C35.3292 10.887 35.0261 11.9828 34.6797 13.2101C35.7621 12.0705 36.7146 10.9308 37.061 9.44048C37.2342 8.69533 37.1043 8.03784 36.628 7.468C36.4981 7.29269 36.2384 7.11732 36.1085 7.16118C35.3292 7.24883 34.6364 7.51186 34.2468 8.257C33.7272 9.26518 33.5541 10.3171 33.5108 11.413C33.5108 12.0705 33.5108 12.728 33.5108 13.3855C33.6406 13.3855 33.7272 13.3855 33.7705 13.3855ZM40.6545 13.9991C42.2564 13.9553 43.8151 13.9991 45.417 13.8676C45.9365 13.8238 46.4561 13.6047 46.8891 13.3417C47.1488 13.2101 47.4086 12.8157 47.4086 12.5089C47.4086 12.2896 47.0623 12.0267 46.8025 11.8513C46.586 11.7198 46.283 11.676 46.0665 11.6321C44.3779 11.5445 42.7327 11.7198 41.1308 12.2896C40.6545 12.465 40.2215 12.8157 39.7886 13.0348C39.7886 13.0786 39.8319 13.1225 39.8319 13.2101C41.2606 12.9472 42.7327 12.5526 44.2048 12.7718C44.2048 12.8157 44.2048 12.9033 44.2481 12.9472C42.9492 13.2101 41.6503 13.4732 40.3515 13.7361C40.3515 13.78 40.3515 13.8676 40.3515 13.9115C40.3947 13.9553 40.5246 13.9991 40.6545 13.9991ZM26.67 12.9033C27.4927 12.0267 28.272 11.15 29.0946 10.3171C29.1379 10.361 29.2245 10.4049 29.2678 10.4487C28.8349 11.15 28.4019 11.8952 27.8823 12.6842C29.1812 11.939 30.0471 10.887 30.6966 9.65965C30.9563 9.17752 30.4801 8.60768 29.9172 8.78299C29.3544 8.95836 28.6616 9.22132 28.3153 9.65965C27.5793 10.624 27.0597 11.7636 26.4536 12.8157C26.5402 12.8157 26.6267 12.8595 26.67 12.9033ZM25.9774 6.98581C26.8865 6.76667 27.839 6.5475 28.7482 6.24067C29.2245 6.06534 29.7007 5.75851 30.0471 5.364C30.2636 5.10101 30.4801 4.575 30.3502 4.31201C30.2203 4.04901 29.7007 3.87368 29.3544 3.87368C28.1854 3.87368 27.0597 4.22434 26.1072 4.92567C25.5444 5.32017 25.1547 5.93383 24.6785 6.45983C24.7218 6.50367 24.7218 6.5475 24.765 6.5475C25.934 6.10917 27.103 5.67084 28.272 5.18867C28.3153 5.27634 28.3586 5.40784 28.4019 5.4955C27.5793 5.93384 26.7567 6.416 25.8907 6.85436C25.934 6.89816 25.9774 6.94202 25.9774 6.98581ZM20.9984 8.257C21.0849 8.257 21.1282 8.21314 21.2148 8.21314C21.0849 6.72283 20.955 5.2325 20.8252 3.74218C20.9117 3.74218 20.9984 3.74218 21.1282 3.69834C21.3014 4.79417 21.4746 5.84617 21.691 6.98581C22.5137 5.53934 22.0374 2.07651 20.9117 0.980682C20.4788 0.54235 19.9593 0.67385 19.7428 1.24368C19.4397 2.12035 19.483 2.99701 19.6995 3.87368C20.0458 5.18867 20.4788 6.50367 20.8684 7.81868C20.8684 7.99398 20.955 8.12549 20.9984 8.257ZM16.842 9.52813C15.9327 8.38852 12.0361 9.61585 10.8239 10.8432C12.1661 10.624 13.3783 9.96646 14.7638 10.0542C14.3308 10.3171 13.8978 10.4925 13.4649 10.6678C13.032 10.8432 12.5557 11.0185 12.0361 11.1938C13.8113 11.7198 15.976 10.9308 16.842 9.52813ZM6.40774 12.0267C6.45104 11.9828 6.49433 11.9828 6.53763 11.939C6.27785 10.9746 6.01808 10.0103 5.71501 9.04601C5.80161 9.00215 5.88819 8.95836 6.01808 8.9145C6.40774 9.83502 6.79741 10.7993 7.23037 11.7198C7.23037 10.9308 7.23037 10.1418 6.92727 9.52813C6.58092 8.78299 5.97478 8.21314 5.41194 7.55565C5.32535 7.468 4.97899 7.42414 4.8924 7.51186C4.76251 7.59951 4.71921 7.90633 4.76251 8.08163C5.32535 9.44048 5.88819 10.7117 6.40774 12.0267ZM18.1841 19.5221C18.747 19.5221 19.3098 19.4345 19.8293 19.2153C20.4355 18.9961 20.4788 18.6016 20.1757 18.0756C19.9159 17.5496 19.4397 17.3743 18.8768 17.2428C16.9718 16.8045 15.1967 17.3305 13.5082 18.1195C13.2485 18.251 13.0752 18.4702 12.8587 18.6455C13.1185 18.7331 13.335 18.777 13.5082 18.7331C14.8504 18.514 16.1925 18.2948 17.5347 18.0318C18.0109 17.9441 18.4439 17.9441 18.9635 18.2948C17.6213 18.5578 16.4523 18.8208 15.2834 19.0838C15.2834 19.1277 15.2834 19.2153 15.2834 19.2592C16.3224 19.3468 17.2316 19.5221 18.1841 19.5221ZM19.9593 27.8066C20.3056 27.6313 20.5221 27.193 20.3056 26.7984C19.7861 25.7903 19.2665 24.7821 18.6604 23.8616C18.3573 23.4233 17.7944 23.1165 17.3615 22.7658C17.3182 22.8096 17.3182 22.8096 17.2749 22.8535C17.7944 23.7301 18.3573 24.6068 18.9202 25.5273C18.8335 25.5712 18.747 25.6149 18.6604 25.6588C17.7512 24.6506 17.1451 23.3794 15.8462 22.6782C16.4523 23.9493 17.0584 25.2205 17.7512 26.4478C18.0542 26.9738 18.5738 27.4121 19.05 27.7628C19.2665 27.982 19.6995 27.9381 19.9593 27.8066Z" fill="#526E3E"></path>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="body4_rightsb_name">
+                            <span>AN TOÀN</span>
+                        </div>
+                        <div>
+                            Lorem ipsum dolor sit amet consecte. Nullam non laoreets porttitor pretium justo venenet. Feugiat parturient sed at aliquet convallis convallis. Facilisi sed sagittis lacus quis odio.
+                        </div>
+                    </div>
+
+                    <div class="body4_rightsb_item">
+                        <div class="body4_rightsb_icon">
+                            <img nh-lazy="image" class="img-fluid" alt="TỰ NHIÊN" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/herbal-spa-treatment-leaves1.png" style="">
+                            <span class="body4_rightsb_icon_bf">
+                                <svg width="51" height="29" viewBox="0 0 51 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18.1841 28.3764C17.4481 27.6751 16.842 26.7984 16.3225 25.878C15.4132 24.3 14.6772 22.5904 13.8546 20.9686C13.768 20.7495 13.5948 20.5303 13.3783 20.4426C12.1661 19.8289 10.997 19.2153 9.74153 18.6893C9.04877 18.3824 8.31277 18.2948 7.57671 18.1633C7.44685 18.1195 7.23037 18.251 7.10044 18.3386C5.10887 19.3906 3.42035 20.8371 1.81842 22.4151C1.42875 22.8096 0.995794 23.248 0.606136 23.6425C0.47625 23.774 0.303068 23.8616 0.173181 23.9931C0.129885 23.9493 0.0432955 23.9055 0 23.9055C0.0865912 23.6425 0.173182 23.3356 0.303069 23.0726C1.12568 21.4508 2.46785 20.355 3.81 19.2592C4.15637 18.9961 4.45944 18.6893 4.8491 18.514C5.49853 18.2071 5.75831 17.6373 5.88819 16.936C6.06138 16.1031 6.36444 15.3141 6.49433 14.4813C6.53762 14.0868 6.40774 13.6485 6.23455 13.254C5.58512 11.7636 4.8491 10.3171 4.15637 8.87064C4.11308 8.78299 4.06978 8.69533 4.02649 8.56382C3.76671 7.90633 3.8966 7.20497 4.32955 6.85436C4.71921 6.5475 5.41194 6.50367 5.97478 6.98581C6.88396 7.73102 7.62002 8.56382 7.8365 9.79116C7.96636 10.5363 8.09629 11.3253 8.22616 12.1582C8.83229 11.5883 9.35181 11.0185 9.9147 10.5363C11.5599 9.04601 13.5082 8.21314 15.7596 8.257C16.1925 8.257 16.6255 8.38852 17.0584 8.60768C17.8811 9.00215 18.0109 9.70351 17.4048 10.361C16.2358 11.676 14.7638 12.4211 12.9887 12.2896C11.9929 12.2458 10.9538 12.202 9.95794 12.1582C9.56829 12.1582 9.35181 12.2458 9.09208 12.5526C8.05298 13.8676 7.01389 15.1388 6.84072 16.936C6.84072 17.0237 6.79741 17.1113 6.79741 17.2866C7.62002 16.936 8.35602 16.5415 9.13539 16.2784C11.0837 15.6648 13.032 15.1388 14.9803 14.569C15.2834 14.4813 15.6297 14.306 15.8462 14.0868C17.2749 12.6403 18.6604 11.1938 20.0458 9.79116C20.3922 9.48434 20.3922 9.17752 20.2623 8.73919C19.7861 7.20497 19.3098 5.62701 18.8768 4.04901C18.6171 3.12851 18.6171 2.16418 18.9202 1.24368C19.0933 0.586185 19.3964 0.104018 20.1324 0.0163526C20.8684 -0.071313 21.4746 0.191686 21.821 0.849183C22.5137 2.12035 22.9899 3.43534 22.9899 4.88184C22.9899 5.53934 22.9034 6.24067 22.8168 7.07353C23.2497 6.59133 23.6827 6.24067 23.9857 5.80233C25.2846 4.00518 27.0597 3.08468 29.2245 2.90935C30.3502 2.82168 31.0429 3.17234 31.3459 3.96134C31.5624 4.53118 31.5192 5.10101 31.1728 5.62701C30.3935 6.89816 29.1379 7.33649 27.7958 7.6433C26.1938 7.99398 24.5918 8.257 22.9899 8.60768C22.7301 8.65147 22.4271 8.78299 22.2539 8.95836C20.5654 10.6678 18.8769 12.4211 17.1883 14.2183C17.3615 14.2183 17.4914 14.2183 17.6646 14.2183C19.9593 14.1745 22.2106 14.1307 24.5053 14.043C24.7218 14.043 25.0248 13.8676 25.1114 13.6923C25.7176 12.6403 26.2804 11.5883 26.8432 10.4925C27.4061 9.39669 28.0988 8.47617 29.3111 8.08163C30.177 7.77481 30.8264 7.90633 31.3027 8.52003C31.7789 9.0898 31.7789 9.70351 31.3027 10.4925C30.3502 12.0705 29.008 13.254 27.3195 13.9991C27.103 14.0868 26.9298 14.1745 26.5835 14.306C27.1463 14.4375 27.5793 14.569 27.9689 14.7005C28.7049 14.9197 29.3977 15.1826 30.1337 15.4018C30.2636 15.4456 30.4801 15.4895 30.5666 15.4456C31.3027 15.0073 31.9954 14.5251 32.6881 14.0868C32.6881 13.0786 32.5582 11.8952 32.6881 10.7993C32.7747 9.83502 33.0778 8.87064 33.4674 7.95019C33.9437 6.72283 35.0694 6.2845 36.2816 6.24067C36.628 6.24067 37.1043 6.54751 37.364 6.8105C38.0568 7.6433 38.2733 8.65147 38.0135 9.7473C37.7104 10.887 37.1476 11.8513 36.4116 12.728C36.1951 12.991 35.9786 13.2101 35.7621 13.4732C35.7621 13.517 35.8054 13.6047 35.8054 13.6485C36.5847 13.5608 37.364 13.517 38.1 13.4293C38.1867 13.4293 38.2733 13.3417 38.3165 13.254C39.3556 11.8513 40.8277 11.1938 42.5162 10.9746C43.6852 10.8432 44.8542 10.7555 46.0232 10.7555C46.4994 10.7555 47.019 10.9746 47.4519 11.1938C48.491 11.8075 48.7075 13.1225 47.755 13.8676C47.1056 14.3936 46.283 14.7443 45.4603 14.9197C43.7285 15.2703 41.9534 15.3141 40.1782 14.9635C39.9185 14.9197 39.6154 14.8758 39.3556 14.7443C38.5763 14.306 37.797 14.306 36.9744 14.4813C35.4158 14.832 33.8571 15.1388 32.2985 15.4456C31.9954 15.4895 31.7357 15.6648 31.3459 15.8401C32.7315 16.4538 33.987 17.0237 35.2425 17.5496C36.2384 17.988 37.3207 18.3386 38.3165 18.7331C38.8794 18.9523 39.3989 18.8646 39.9618 18.6455C41.1308 18.1633 42.2997 17.6373 43.512 17.2866C45.8933 16.673 48.1014 17.3305 50.0929 18.6893C50.7424 19.1277 51.132 19.8289 50.9589 20.6618C50.7857 21.4946 50.1796 21.9768 49.4435 22.196C48.4477 22.5028 47.4519 22.6343 46.4128 22.3713C45.0274 21.9768 43.6419 21.4946 42.2997 21.0563C41.1741 20.7056 40.0917 20.3111 38.9227 20.0043C40.0051 21.2754 40.6112 22.7219 41.0009 24.3C41.0875 24.6944 41.1741 25.1328 41.1741 25.5273C41.1308 26.7984 39.9618 27.4998 38.966 26.7984C38.3165 26.3601 37.6238 25.7026 37.3207 24.9574C36.8445 23.8178 36.5847 22.5028 36.3249 21.2754C36.1518 20.4426 36.1518 19.6098 36.0652 18.7331C32.1253 17.199 28.3153 15.1826 23.9857 14.8758C23.9424 14.9635 23.8559 15.0073 23.8125 15.095C24.5485 15.6648 25.3279 16.1908 26.0639 16.7606C26.1505 16.8483 26.2804 16.8483 26.4103 16.8921C28.6616 17.1113 30.3935 18.2948 31.8655 20.0043C32.6448 20.9248 32.9046 21.9768 32.6881 23.2041C32.4284 24.7821 30.8264 25.4396 29.6575 24.3438C28.9214 23.6425 28.3153 22.7658 27.7958 21.9329C27.2329 21.0125 26.8 20.0043 26.2371 18.9085C26.367 20.4864 26.5402 21.8891 26.6267 23.3356C26.67 24.3 26.1938 25.1328 25.6309 25.878C24.8949 26.8861 23.6394 26.8423 22.9466 25.7903C22.124 24.5191 21.9075 23.1165 22.4704 21.67C23.0765 20.1796 23.5961 18.6016 24.765 17.4181C24.8516 17.3305 24.8083 16.8921 24.7218 16.8045C23.4662 15.7525 22.2539 14.832 20.4355 14.9635C16.7553 15.2265 13.1618 15.8401 9.69822 17.1552C9.48173 17.2428 9.30856 17.3305 9.04877 17.4181C10.0446 17.8127 10.9105 18.1633 11.8197 18.514C13.768 16.5853 16.106 15.9278 18.747 16.3223C19.6562 16.4538 20.5221 16.7606 20.9984 17.7249C21.5179 18.777 21.3447 19.7413 20.219 20.1358C19.4397 20.3988 18.6171 20.4426 17.7944 20.5303C17.3182 20.5742 16.842 20.4426 16.3225 20.355C15.8462 20.3111 15.4132 20.2235 14.8936 20.2673C15.1534 20.3988 15.3699 20.5303 15.6297 20.6618C18.0975 21.8891 20.0458 23.5986 21.0417 26.2724C21.2581 26.8423 21.388 27.3683 21.0849 27.9381C20.4788 29.1216 19.2232 29.3846 18.1841 28.3764ZM25.5011 18.9961C25.0248 20.1358 25.198 21.4946 24.7218 22.6782C24.6352 22.6782 24.5053 22.6343 24.4187 22.6343C24.462 21.5385 24.5053 20.4426 24.5485 19.3468C24.5053 19.3468 24.4187 19.303 24.3754 19.303C23.9424 20.4864 23.4229 21.6261 23.0765 22.8535C22.8168 23.7301 23.1631 24.563 23.6394 25.3081C24.0723 25.9656 24.7218 26.0095 25.1114 25.352C25.5011 24.7383 25.8907 24.0808 25.8907 23.3794C25.9774 21.9329 25.8041 20.4864 25.7609 19.04C25.6743 18.9961 25.5876 18.9961 25.5011 18.9961ZM27.4927 18.0756C28.3586 19.0838 29.2245 20.0043 30.0038 20.9248C30.177 21.1001 30.2203 21.3632 30.3068 21.5823C30.2203 21.6261 30.1337 21.67 30.0471 21.7576C29.2245 20.8371 28.4019 19.9605 27.5793 19.04C27.4927 19.0838 27.4493 19.1714 27.3628 19.2153C28.0555 20.355 28.7049 21.5385 29.441 22.6782C29.6142 22.985 29.9172 23.248 30.177 23.4672C30.8697 24.0369 31.4759 23.774 31.649 22.8973C31.7789 22.0644 31.6057 21.3193 31.0862 20.6179C30.2203 19.4783 28.9214 18.7331 27.4927 18.0756ZM39.0093 23.774C38.4898 22.6781 37.9702 21.5823 37.4074 20.5303C37.3207 20.5742 37.2775 20.5742 37.1909 20.6179C37.2342 21.9768 37.4939 23.2918 38.1 24.4753C38.3598 25.0451 38.8361 25.4834 39.2691 25.9218C39.3989 26.0533 39.7886 26.1409 39.9185 26.0533C40.0917 25.9218 40.2215 25.5712 40.1782 25.3958C39.9185 24.3876 39.5721 23.3356 39.2258 22.3275C39.0959 21.9329 38.7928 21.5823 38.5763 21.2316C38.7495 22.0644 39.3989 22.7658 39.0093 23.774ZM41.5637 18.9085C42.9925 19.2592 44.5511 18.9961 45.8933 19.8289C44.5078 19.7851 43.1224 19.7851 41.6503 19.7413C41.8668 19.8728 41.9534 19.9605 42.0399 20.0043C43.6852 20.5303 45.2872 21.1001 46.9324 21.4946C47.6251 21.67 48.3611 21.4508 49.0971 21.3632C49.5734 21.2754 50.0064 21.0563 50.0929 20.5303C50.2228 19.9605 49.8331 19.6098 49.4002 19.3468C48.058 18.4263 46.586 18.0318 45.0274 18.0318C43.8151 17.9441 42.6894 18.4263 41.5637 18.9085ZM33.7705 13.3855C34.2901 12.1143 34.8529 10.8432 35.3725 9.61585C35.459 9.65965 35.5456 9.70351 35.6323 9.7473C35.3292 10.887 35.0261 11.9828 34.6797 13.2101C35.7621 12.0705 36.7146 10.9308 37.061 9.44048C37.2342 8.69533 37.1043 8.03784 36.628 7.468C36.4981 7.29269 36.2384 7.11732 36.1085 7.16118C35.3292 7.24883 34.6364 7.51186 34.2468 8.257C33.7272 9.26518 33.5541 10.3171 33.5108 11.413C33.5108 12.0705 33.5108 12.728 33.5108 13.3855C33.6406 13.3855 33.7272 13.3855 33.7705 13.3855ZM40.6545 13.9991C42.2564 13.9553 43.8151 13.9991 45.417 13.8676C45.9365 13.8238 46.4561 13.6047 46.8891 13.3417C47.1488 13.2101 47.4086 12.8157 47.4086 12.5089C47.4086 12.2896 47.0623 12.0267 46.8025 11.8513C46.586 11.7198 46.283 11.676 46.0665 11.6321C44.3779 11.5445 42.7327 11.7198 41.1308 12.2896C40.6545 12.465 40.2215 12.8157 39.7886 13.0348C39.7886 13.0786 39.8319 13.1225 39.8319 13.2101C41.2606 12.9472 42.7327 12.5526 44.2048 12.7718C44.2048 12.8157 44.2048 12.9033 44.2481 12.9472C42.9492 13.2101 41.6503 13.4732 40.3515 13.7361C40.3515 13.78 40.3515 13.8676 40.3515 13.9115C40.3947 13.9553 40.5246 13.9991 40.6545 13.9991ZM26.67 12.9033C27.4927 12.0267 28.272 11.15 29.0946 10.3171C29.1379 10.361 29.2245 10.4049 29.2678 10.4487C28.8349 11.15 28.4019 11.8952 27.8823 12.6842C29.1812 11.939 30.0471 10.887 30.6966 9.65965C30.9563 9.17752 30.4801 8.60768 29.9172 8.78299C29.3544 8.95836 28.6616 9.22132 28.3153 9.65965C27.5793 10.624 27.0597 11.7636 26.4536 12.8157C26.5402 12.8157 26.6267 12.8595 26.67 12.9033ZM25.9774 6.98581C26.8865 6.76667 27.839 6.5475 28.7482 6.24067C29.2245 6.06534 29.7007 5.75851 30.0471 5.364C30.2636 5.10101 30.4801 4.575 30.3502 4.31201C30.2203 4.04901 29.7007 3.87368 29.3544 3.87368C28.1854 3.87368 27.0597 4.22434 26.1072 4.92567C25.5444 5.32017 25.1547 5.93383 24.6785 6.45983C24.7218 6.50367 24.7218 6.5475 24.765 6.5475C25.934 6.10917 27.103 5.67084 28.272 5.18867C28.3153 5.27634 28.3586 5.40784 28.4019 5.4955C27.5793 5.93384 26.7567 6.416 25.8907 6.85436C25.934 6.89816 25.9774 6.94202 25.9774 6.98581ZM20.9984 8.257C21.0849 8.257 21.1282 8.21314 21.2148 8.21314C21.0849 6.72283 20.955 5.2325 20.8252 3.74218C20.9117 3.74218 20.9984 3.74218 21.1282 3.69834C21.3014 4.79417 21.4746 5.84617 21.691 6.98581C22.5137 5.53934 22.0374 2.07651 20.9117 0.980682C20.4788 0.54235 19.9593 0.67385 19.7428 1.24368C19.4397 2.12035 19.483 2.99701 19.6995 3.87368C20.0458 5.18867 20.4788 6.50367 20.8684 7.81868C20.8684 7.99398 20.955 8.12549 20.9984 8.257ZM16.842 9.52813C15.9327 8.38852 12.0361 9.61585 10.8239 10.8432C12.1661 10.624 13.3783 9.96646 14.7638 10.0542C14.3308 10.3171 13.8978 10.4925 13.4649 10.6678C13.032 10.8432 12.5557 11.0185 12.0361 11.1938C13.8113 11.7198 15.976 10.9308 16.842 9.52813ZM6.40774 12.0267C6.45104 11.9828 6.49433 11.9828 6.53763 11.939C6.27785 10.9746 6.01808 10.0103 5.71501 9.04601C5.80161 9.00215 5.88819 8.95836 6.01808 8.9145C6.40774 9.83502 6.79741 10.7993 7.23037 11.7198C7.23037 10.9308 7.23037 10.1418 6.92727 9.52813C6.58092 8.78299 5.97478 8.21314 5.41194 7.55565C5.32535 7.468 4.97899 7.42414 4.8924 7.51186C4.76251 7.59951 4.71921 7.90633 4.76251 8.08163C5.32535 9.44048 5.88819 10.7117 6.40774 12.0267ZM18.1841 19.5221C18.747 19.5221 19.3098 19.4345 19.8293 19.2153C20.4355 18.9961 20.4788 18.6016 20.1757 18.0756C19.9159 17.5496 19.4397 17.3743 18.8768 17.2428C16.9718 16.8045 15.1967 17.3305 13.5082 18.1195C13.2485 18.251 13.0752 18.4702 12.8587 18.6455C13.1185 18.7331 13.335 18.777 13.5082 18.7331C14.8504 18.514 16.1925 18.2948 17.5347 18.0318C18.0109 17.9441 18.4439 17.9441 18.9635 18.2948C17.6213 18.5578 16.4523 18.8208 15.2834 19.0838C15.2834 19.1277 15.2834 19.2153 15.2834 19.2592C16.3224 19.3468 17.2316 19.5221 18.1841 19.5221ZM19.9593 27.8066C20.3056 27.6313 20.5221 27.193 20.3056 26.7984C19.7861 25.7903 19.2665 24.7821 18.6604 23.8616C18.3573 23.4233 17.7944 23.1165 17.3615 22.7658C17.3182 22.8096 17.3182 22.8096 17.2749 22.8535C17.7944 23.7301 18.3573 24.6068 18.9202 25.5273C18.8335 25.5712 18.747 25.6149 18.6604 25.6588C17.7512 24.6506 17.1451 23.3794 15.8462 22.6782C16.4523 23.9493 17.0584 25.2205 17.7512 26.4478C18.0542 26.9738 18.5738 27.4121 19.05 27.7628C19.2665 27.982 19.6995 27.9381 19.9593 27.8066Z" fill="#526E3E"></path>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="body4_rightsb_name">
+                            <span>TỰ NHIÊN</span>
+                        </div>
+                        <div>
+                            Lorem ipsum dolor sit amet consecte. Nullam non laoreets porttitor pretium justo venenet. Feugiat parturient sed at aliquet convallis convallis. Facilisi sed sagittis lacus quis odio.
+                        </div>
+                    </div>
+                </div>
+
+                <div style="flex-basis: 50%;display:flex;">
+                    <div class="body4_rightsb_item">
+                        <div class="body4_rightsb_icon">
+                            <img nh-lazy="image" class="img-fluid" alt="AN TOÀN" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/ecology1.png" style="">
+                            <span class="body4_rightsb_icon_bf">
+                                <svg width="51" height="29" viewBox="0 0 51 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18.1841 28.3764C17.4481 27.6751 16.842 26.7984 16.3225 25.878C15.4132 24.3 14.6772 22.5904 13.8546 20.9686C13.768 20.7495 13.5948 20.5303 13.3783 20.4426C12.1661 19.8289 10.997 19.2153 9.74153 18.6893C9.04877 18.3824 8.31277 18.2948 7.57671 18.1633C7.44685 18.1195 7.23037 18.251 7.10044 18.3386C5.10887 19.3906 3.42035 20.8371 1.81842 22.4151C1.42875 22.8096 0.995794 23.248 0.606136 23.6425C0.47625 23.774 0.303068 23.8616 0.173181 23.9931C0.129885 23.9493 0.0432955 23.9055 0 23.9055C0.0865912 23.6425 0.173182 23.3356 0.303069 23.0726C1.12568 21.4508 2.46785 20.355 3.81 19.2592C4.15637 18.9961 4.45944 18.6893 4.8491 18.514C5.49853 18.2071 5.75831 17.6373 5.88819 16.936C6.06138 16.1031 6.36444 15.3141 6.49433 14.4813C6.53762 14.0868 6.40774 13.6485 6.23455 13.254C5.58512 11.7636 4.8491 10.3171 4.15637 8.87064C4.11308 8.78299 4.06978 8.69533 4.02649 8.56382C3.76671 7.90633 3.8966 7.20497 4.32955 6.85436C4.71921 6.5475 5.41194 6.50367 5.97478 6.98581C6.88396 7.73102 7.62002 8.56382 7.8365 9.79116C7.96636 10.5363 8.09629 11.3253 8.22616 12.1582C8.83229 11.5883 9.35181 11.0185 9.9147 10.5363C11.5599 9.04601 13.5082 8.21314 15.7596 8.257C16.1925 8.257 16.6255 8.38852 17.0584 8.60768C17.8811 9.00215 18.0109 9.70351 17.4048 10.361C16.2358 11.676 14.7638 12.4211 12.9887 12.2896C11.9929 12.2458 10.9538 12.202 9.95794 12.1582C9.56829 12.1582 9.35181 12.2458 9.09208 12.5526C8.05298 13.8676 7.01389 15.1388 6.84072 16.936C6.84072 17.0237 6.79741 17.1113 6.79741 17.2866C7.62002 16.936 8.35602 16.5415 9.13539 16.2784C11.0837 15.6648 13.032 15.1388 14.9803 14.569C15.2834 14.4813 15.6297 14.306 15.8462 14.0868C17.2749 12.6403 18.6604 11.1938 20.0458 9.79116C20.3922 9.48434 20.3922 9.17752 20.2623 8.73919C19.7861 7.20497 19.3098 5.62701 18.8768 4.04901C18.6171 3.12851 18.6171 2.16418 18.9202 1.24368C19.0933 0.586185 19.3964 0.104018 20.1324 0.0163526C20.8684 -0.071313 21.4746 0.191686 21.821 0.849183C22.5137 2.12035 22.9899 3.43534 22.9899 4.88184C22.9899 5.53934 22.9034 6.24067 22.8168 7.07353C23.2497 6.59133 23.6827 6.24067 23.9857 5.80233C25.2846 4.00518 27.0597 3.08468 29.2245 2.90935C30.3502 2.82168 31.0429 3.17234 31.3459 3.96134C31.5624 4.53118 31.5192 5.10101 31.1728 5.62701C30.3935 6.89816 29.1379 7.33649 27.7958 7.6433C26.1938 7.99398 24.5918 8.257 22.9899 8.60768C22.7301 8.65147 22.4271 8.78299 22.2539 8.95836C20.5654 10.6678 18.8769 12.4211 17.1883 14.2183C17.3615 14.2183 17.4914 14.2183 17.6646 14.2183C19.9593 14.1745 22.2106 14.1307 24.5053 14.043C24.7218 14.043 25.0248 13.8676 25.1114 13.6923C25.7176 12.6403 26.2804 11.5883 26.8432 10.4925C27.4061 9.39669 28.0988 8.47617 29.3111 8.08163C30.177 7.77481 30.8264 7.90633 31.3027 8.52003C31.7789 9.0898 31.7789 9.70351 31.3027 10.4925C30.3502 12.0705 29.008 13.254 27.3195 13.9991C27.103 14.0868 26.9298 14.1745 26.5835 14.306C27.1463 14.4375 27.5793 14.569 27.9689 14.7005C28.7049 14.9197 29.3977 15.1826 30.1337 15.4018C30.2636 15.4456 30.4801 15.4895 30.5666 15.4456C31.3027 15.0073 31.9954 14.5251 32.6881 14.0868C32.6881 13.0786 32.5582 11.8952 32.6881 10.7993C32.7747 9.83502 33.0778 8.87064 33.4674 7.95019C33.9437 6.72283 35.0694 6.2845 36.2816 6.24067C36.628 6.24067 37.1043 6.54751 37.364 6.8105C38.0568 7.6433 38.2733 8.65147 38.0135 9.7473C37.7104 10.887 37.1476 11.8513 36.4116 12.728C36.1951 12.991 35.9786 13.2101 35.7621 13.4732C35.7621 13.517 35.8054 13.6047 35.8054 13.6485C36.5847 13.5608 37.364 13.517 38.1 13.4293C38.1867 13.4293 38.2733 13.3417 38.3165 13.254C39.3556 11.8513 40.8277 11.1938 42.5162 10.9746C43.6852 10.8432 44.8542 10.7555 46.0232 10.7555C46.4994 10.7555 47.019 10.9746 47.4519 11.1938C48.491 11.8075 48.7075 13.1225 47.755 13.8676C47.1056 14.3936 46.283 14.7443 45.4603 14.9197C43.7285 15.2703 41.9534 15.3141 40.1782 14.9635C39.9185 14.9197 39.6154 14.8758 39.3556 14.7443C38.5763 14.306 37.797 14.306 36.9744 14.4813C35.4158 14.832 33.8571 15.1388 32.2985 15.4456C31.9954 15.4895 31.7357 15.6648 31.3459 15.8401C32.7315 16.4538 33.987 17.0237 35.2425 17.5496C36.2384 17.988 37.3207 18.3386 38.3165 18.7331C38.8794 18.9523 39.3989 18.8646 39.9618 18.6455C41.1308 18.1633 42.2997 17.6373 43.512 17.2866C45.8933 16.673 48.1014 17.3305 50.0929 18.6893C50.7424 19.1277 51.132 19.8289 50.9589 20.6618C50.7857 21.4946 50.1796 21.9768 49.4435 22.196C48.4477 22.5028 47.4519 22.6343 46.4128 22.3713C45.0274 21.9768 43.6419 21.4946 42.2997 21.0563C41.1741 20.7056 40.0917 20.3111 38.9227 20.0043C40.0051 21.2754 40.6112 22.7219 41.0009 24.3C41.0875 24.6944 41.1741 25.1328 41.1741 25.5273C41.1308 26.7984 39.9618 27.4998 38.966 26.7984C38.3165 26.3601 37.6238 25.7026 37.3207 24.9574C36.8445 23.8178 36.5847 22.5028 36.3249 21.2754C36.1518 20.4426 36.1518 19.6098 36.0652 18.7331C32.1253 17.199 28.3153 15.1826 23.9857 14.8758C23.9424 14.9635 23.8559 15.0073 23.8125 15.095C24.5485 15.6648 25.3279 16.1908 26.0639 16.7606C26.1505 16.8483 26.2804 16.8483 26.4103 16.8921C28.6616 17.1113 30.3935 18.2948 31.8655 20.0043C32.6448 20.9248 32.9046 21.9768 32.6881 23.2041C32.4284 24.7821 30.8264 25.4396 29.6575 24.3438C28.9214 23.6425 28.3153 22.7658 27.7958 21.9329C27.2329 21.0125 26.8 20.0043 26.2371 18.9085C26.367 20.4864 26.5402 21.8891 26.6267 23.3356C26.67 24.3 26.1938 25.1328 25.6309 25.878C24.8949 26.8861 23.6394 26.8423 22.9466 25.7903C22.124 24.5191 21.9075 23.1165 22.4704 21.67C23.0765 20.1796 23.5961 18.6016 24.765 17.4181C24.8516 17.3305 24.8083 16.8921 24.7218 16.8045C23.4662 15.7525 22.2539 14.832 20.4355 14.9635C16.7553 15.2265 13.1618 15.8401 9.69822 17.1552C9.48173 17.2428 9.30856 17.3305 9.04877 17.4181C10.0446 17.8127 10.9105 18.1633 11.8197 18.514C13.768 16.5853 16.106 15.9278 18.747 16.3223C19.6562 16.4538 20.5221 16.7606 20.9984 17.7249C21.5179 18.777 21.3447 19.7413 20.219 20.1358C19.4397 20.3988 18.6171 20.4426 17.7944 20.5303C17.3182 20.5742 16.842 20.4426 16.3225 20.355C15.8462 20.3111 15.4132 20.2235 14.8936 20.2673C15.1534 20.3988 15.3699 20.5303 15.6297 20.6618C18.0975 21.8891 20.0458 23.5986 21.0417 26.2724C21.2581 26.8423 21.388 27.3683 21.0849 27.9381C20.4788 29.1216 19.2232 29.3846 18.1841 28.3764ZM25.5011 18.9961C25.0248 20.1358 25.198 21.4946 24.7218 22.6782C24.6352 22.6782 24.5053 22.6343 24.4187 22.6343C24.462 21.5385 24.5053 20.4426 24.5485 19.3468C24.5053 19.3468 24.4187 19.303 24.3754 19.303C23.9424 20.4864 23.4229 21.6261 23.0765 22.8535C22.8168 23.7301 23.1631 24.563 23.6394 25.3081C24.0723 25.9656 24.7218 26.0095 25.1114 25.352C25.5011 24.7383 25.8907 24.0808 25.8907 23.3794C25.9774 21.9329 25.8041 20.4864 25.7609 19.04C25.6743 18.9961 25.5876 18.9961 25.5011 18.9961ZM27.4927 18.0756C28.3586 19.0838 29.2245 20.0043 30.0038 20.9248C30.177 21.1001 30.2203 21.3632 30.3068 21.5823C30.2203 21.6261 30.1337 21.67 30.0471 21.7576C29.2245 20.8371 28.4019 19.9605 27.5793 19.04C27.4927 19.0838 27.4493 19.1714 27.3628 19.2153C28.0555 20.355 28.7049 21.5385 29.441 22.6782C29.6142 22.985 29.9172 23.248 30.177 23.4672C30.8697 24.0369 31.4759 23.774 31.649 22.8973C31.7789 22.0644 31.6057 21.3193 31.0862 20.6179C30.2203 19.4783 28.9214 18.7331 27.4927 18.0756ZM39.0093 23.774C38.4898 22.6781 37.9702 21.5823 37.4074 20.5303C37.3207 20.5742 37.2775 20.5742 37.1909 20.6179C37.2342 21.9768 37.4939 23.2918 38.1 24.4753C38.3598 25.0451 38.8361 25.4834 39.2691 25.9218C39.3989 26.0533 39.7886 26.1409 39.9185 26.0533C40.0917 25.9218 40.2215 25.5712 40.1782 25.3958C39.9185 24.3876 39.5721 23.3356 39.2258 22.3275C39.0959 21.9329 38.7928 21.5823 38.5763 21.2316C38.7495 22.0644 39.3989 22.7658 39.0093 23.774ZM41.5637 18.9085C42.9925 19.2592 44.5511 18.9961 45.8933 19.8289C44.5078 19.7851 43.1224 19.7851 41.6503 19.7413C41.8668 19.8728 41.9534 19.9605 42.0399 20.0043C43.6852 20.5303 45.2872 21.1001 46.9324 21.4946C47.6251 21.67 48.3611 21.4508 49.0971 21.3632C49.5734 21.2754 50.0064 21.0563 50.0929 20.5303C50.2228 19.9605 49.8331 19.6098 49.4002 19.3468C48.058 18.4263 46.586 18.0318 45.0274 18.0318C43.8151 17.9441 42.6894 18.4263 41.5637 18.9085ZM33.7705 13.3855C34.2901 12.1143 34.8529 10.8432 35.3725 9.61585C35.459 9.65965 35.5456 9.70351 35.6323 9.7473C35.3292 10.887 35.0261 11.9828 34.6797 13.2101C35.7621 12.0705 36.7146 10.9308 37.061 9.44048C37.2342 8.69533 37.1043 8.03784 36.628 7.468C36.4981 7.29269 36.2384 7.11732 36.1085 7.16118C35.3292 7.24883 34.6364 7.51186 34.2468 8.257C33.7272 9.26518 33.5541 10.3171 33.5108 11.413C33.5108 12.0705 33.5108 12.728 33.5108 13.3855C33.6406 13.3855 33.7272 13.3855 33.7705 13.3855ZM40.6545 13.9991C42.2564 13.9553 43.8151 13.9991 45.417 13.8676C45.9365 13.8238 46.4561 13.6047 46.8891 13.3417C47.1488 13.2101 47.4086 12.8157 47.4086 12.5089C47.4086 12.2896 47.0623 12.0267 46.8025 11.8513C46.586 11.7198 46.283 11.676 46.0665 11.6321C44.3779 11.5445 42.7327 11.7198 41.1308 12.2896C40.6545 12.465 40.2215 12.8157 39.7886 13.0348C39.7886 13.0786 39.8319 13.1225 39.8319 13.2101C41.2606 12.9472 42.7327 12.5526 44.2048 12.7718C44.2048 12.8157 44.2048 12.9033 44.2481 12.9472C42.9492 13.2101 41.6503 13.4732 40.3515 13.7361C40.3515 13.78 40.3515 13.8676 40.3515 13.9115C40.3947 13.9553 40.5246 13.9991 40.6545 13.9991ZM26.67 12.9033C27.4927 12.0267 28.272 11.15 29.0946 10.3171C29.1379 10.361 29.2245 10.4049 29.2678 10.4487C28.8349 11.15 28.4019 11.8952 27.8823 12.6842C29.1812 11.939 30.0471 10.887 30.6966 9.65965C30.9563 9.17752 30.4801 8.60768 29.9172 8.78299C29.3544 8.95836 28.6616 9.22132 28.3153 9.65965C27.5793 10.624 27.0597 11.7636 26.4536 12.8157C26.5402 12.8157 26.6267 12.8595 26.67 12.9033ZM25.9774 6.98581C26.8865 6.76667 27.839 6.5475 28.7482 6.24067C29.2245 6.06534 29.7007 5.75851 30.0471 5.364C30.2636 5.10101 30.4801 4.575 30.3502 4.31201C30.2203 4.04901 29.7007 3.87368 29.3544 3.87368C28.1854 3.87368 27.0597 4.22434 26.1072 4.92567C25.5444 5.32017 25.1547 5.93383 24.6785 6.45983C24.7218 6.50367 24.7218 6.5475 24.765 6.5475C25.934 6.10917 27.103 5.67084 28.272 5.18867C28.3153 5.27634 28.3586 5.40784 28.4019 5.4955C27.5793 5.93384 26.7567 6.416 25.8907 6.85436C25.934 6.89816 25.9774 6.94202 25.9774 6.98581ZM20.9984 8.257C21.0849 8.257 21.1282 8.21314 21.2148 8.21314C21.0849 6.72283 20.955 5.2325 20.8252 3.74218C20.9117 3.74218 20.9984 3.74218 21.1282 3.69834C21.3014 4.79417 21.4746 5.84617 21.691 6.98581C22.5137 5.53934 22.0374 2.07651 20.9117 0.980682C20.4788 0.54235 19.9593 0.67385 19.7428 1.24368C19.4397 2.12035 19.483 2.99701 19.6995 3.87368C20.0458 5.18867 20.4788 6.50367 20.8684 7.81868C20.8684 7.99398 20.955 8.12549 20.9984 8.257ZM16.842 9.52813C15.9327 8.38852 12.0361 9.61585 10.8239 10.8432C12.1661 10.624 13.3783 9.96646 14.7638 10.0542C14.3308 10.3171 13.8978 10.4925 13.4649 10.6678C13.032 10.8432 12.5557 11.0185 12.0361 11.1938C13.8113 11.7198 15.976 10.9308 16.842 9.52813ZM6.40774 12.0267C6.45104 11.9828 6.49433 11.9828 6.53763 11.939C6.27785 10.9746 6.01808 10.0103 5.71501 9.04601C5.80161 9.00215 5.88819 8.95836 6.01808 8.9145C6.40774 9.83502 6.79741 10.7993 7.23037 11.7198C7.23037 10.9308 7.23037 10.1418 6.92727 9.52813C6.58092 8.78299 5.97478 8.21314 5.41194 7.55565C5.32535 7.468 4.97899 7.42414 4.8924 7.51186C4.76251 7.59951 4.71921 7.90633 4.76251 8.08163C5.32535 9.44048 5.88819 10.7117 6.40774 12.0267ZM18.1841 19.5221C18.747 19.5221 19.3098 19.4345 19.8293 19.2153C20.4355 18.9961 20.4788 18.6016 20.1757 18.0756C19.9159 17.5496 19.4397 17.3743 18.8768 17.2428C16.9718 16.8045 15.1967 17.3305 13.5082 18.1195C13.2485 18.251 13.0752 18.4702 12.8587 18.6455C13.1185 18.7331 13.335 18.777 13.5082 18.7331C14.8504 18.514 16.1925 18.2948 17.5347 18.0318C18.0109 17.9441 18.4439 17.9441 18.9635 18.2948C17.6213 18.5578 16.4523 18.8208 15.2834 19.0838C15.2834 19.1277 15.2834 19.2153 15.2834 19.2592C16.3224 19.3468 17.2316 19.5221 18.1841 19.5221ZM19.9593 27.8066C20.3056 27.6313 20.5221 27.193 20.3056 26.7984C19.7861 25.7903 19.2665 24.7821 18.6604 23.8616C18.3573 23.4233 17.7944 23.1165 17.3615 22.7658C17.3182 22.8096 17.3182 22.8096 17.2749 22.8535C17.7944 23.7301 18.3573 24.6068 18.9202 25.5273C18.8335 25.5712 18.747 25.6149 18.6604 25.6588C17.7512 24.6506 17.1451 23.3794 15.8462 22.6782C16.4523 23.9493 17.0584 25.2205 17.7512 26.4478C18.0542 26.9738 18.5738 27.4121 19.05 27.7628C19.2665 27.982 19.6995 27.9381 19.9593 27.8066Z" fill="#526E3E"></path>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="body4_rightsb_name">
+                            <span>FREESHIP</span>
+                        </div>
+                        <div>
+                            Lorem ipsum dolor sit amet consecte. Nullam non laoreets porttitor pretium justo venenet. Feugiat parturient sed at aliquet convallis convallis. Facilisi sed sagittis lacus quis odio.
+                        </div>
+                    </div>
+
+                    <div class="body4_rightsb_item">
+                        <div class="body4_rightsb_icon">
+                            <img nh-lazy="image" class="img-fluid" alt="AN TOÀN" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/natural-ingredients1.png" style="">
+                            <span class="body4_rightsb_icon_bf">
+                                <svg width="51" height="29" viewBox="0 0 51 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18.1841 28.3764C17.4481 27.6751 16.842 26.7984 16.3225 25.878C15.4132 24.3 14.6772 22.5904 13.8546 20.9686C13.768 20.7495 13.5948 20.5303 13.3783 20.4426C12.1661 19.8289 10.997 19.2153 9.74153 18.6893C9.04877 18.3824 8.31277 18.2948 7.57671 18.1633C7.44685 18.1195 7.23037 18.251 7.10044 18.3386C5.10887 19.3906 3.42035 20.8371 1.81842 22.4151C1.42875 22.8096 0.995794 23.248 0.606136 23.6425C0.47625 23.774 0.303068 23.8616 0.173181 23.9931C0.129885 23.9493 0.0432955 23.9055 0 23.9055C0.0865912 23.6425 0.173182 23.3356 0.303069 23.0726C1.12568 21.4508 2.46785 20.355 3.81 19.2592C4.15637 18.9961 4.45944 18.6893 4.8491 18.514C5.49853 18.2071 5.75831 17.6373 5.88819 16.936C6.06138 16.1031 6.36444 15.3141 6.49433 14.4813C6.53762 14.0868 6.40774 13.6485 6.23455 13.254C5.58512 11.7636 4.8491 10.3171 4.15637 8.87064C4.11308 8.78299 4.06978 8.69533 4.02649 8.56382C3.76671 7.90633 3.8966 7.20497 4.32955 6.85436C4.71921 6.5475 5.41194 6.50367 5.97478 6.98581C6.88396 7.73102 7.62002 8.56382 7.8365 9.79116C7.96636 10.5363 8.09629 11.3253 8.22616 12.1582C8.83229 11.5883 9.35181 11.0185 9.9147 10.5363C11.5599 9.04601 13.5082 8.21314 15.7596 8.257C16.1925 8.257 16.6255 8.38852 17.0584 8.60768C17.8811 9.00215 18.0109 9.70351 17.4048 10.361C16.2358 11.676 14.7638 12.4211 12.9887 12.2896C11.9929 12.2458 10.9538 12.202 9.95794 12.1582C9.56829 12.1582 9.35181 12.2458 9.09208 12.5526C8.05298 13.8676 7.01389 15.1388 6.84072 16.936C6.84072 17.0237 6.79741 17.1113 6.79741 17.2866C7.62002 16.936 8.35602 16.5415 9.13539 16.2784C11.0837 15.6648 13.032 15.1388 14.9803 14.569C15.2834 14.4813 15.6297 14.306 15.8462 14.0868C17.2749 12.6403 18.6604 11.1938 20.0458 9.79116C20.3922 9.48434 20.3922 9.17752 20.2623 8.73919C19.7861 7.20497 19.3098 5.62701 18.8768 4.04901C18.6171 3.12851 18.6171 2.16418 18.9202 1.24368C19.0933 0.586185 19.3964 0.104018 20.1324 0.0163526C20.8684 -0.071313 21.4746 0.191686 21.821 0.849183C22.5137 2.12035 22.9899 3.43534 22.9899 4.88184C22.9899 5.53934 22.9034 6.24067 22.8168 7.07353C23.2497 6.59133 23.6827 6.24067 23.9857 5.80233C25.2846 4.00518 27.0597 3.08468 29.2245 2.90935C30.3502 2.82168 31.0429 3.17234 31.3459 3.96134C31.5624 4.53118 31.5192 5.10101 31.1728 5.62701C30.3935 6.89816 29.1379 7.33649 27.7958 7.6433C26.1938 7.99398 24.5918 8.257 22.9899 8.60768C22.7301 8.65147 22.4271 8.78299 22.2539 8.95836C20.5654 10.6678 18.8769 12.4211 17.1883 14.2183C17.3615 14.2183 17.4914 14.2183 17.6646 14.2183C19.9593 14.1745 22.2106 14.1307 24.5053 14.043C24.7218 14.043 25.0248 13.8676 25.1114 13.6923C25.7176 12.6403 26.2804 11.5883 26.8432 10.4925C27.4061 9.39669 28.0988 8.47617 29.3111 8.08163C30.177 7.77481 30.8264 7.90633 31.3027 8.52003C31.7789 9.0898 31.7789 9.70351 31.3027 10.4925C30.3502 12.0705 29.008 13.254 27.3195 13.9991C27.103 14.0868 26.9298 14.1745 26.5835 14.306C27.1463 14.4375 27.5793 14.569 27.9689 14.7005C28.7049 14.9197 29.3977 15.1826 30.1337 15.4018C30.2636 15.4456 30.4801 15.4895 30.5666 15.4456C31.3027 15.0073 31.9954 14.5251 32.6881 14.0868C32.6881 13.0786 32.5582 11.8952 32.6881 10.7993C32.7747 9.83502 33.0778 8.87064 33.4674 7.95019C33.9437 6.72283 35.0694 6.2845 36.2816 6.24067C36.628 6.24067 37.1043 6.54751 37.364 6.8105C38.0568 7.6433 38.2733 8.65147 38.0135 9.7473C37.7104 10.887 37.1476 11.8513 36.4116 12.728C36.1951 12.991 35.9786 13.2101 35.7621 13.4732C35.7621 13.517 35.8054 13.6047 35.8054 13.6485C36.5847 13.5608 37.364 13.517 38.1 13.4293C38.1867 13.4293 38.2733 13.3417 38.3165 13.254C39.3556 11.8513 40.8277 11.1938 42.5162 10.9746C43.6852 10.8432 44.8542 10.7555 46.0232 10.7555C46.4994 10.7555 47.019 10.9746 47.4519 11.1938C48.491 11.8075 48.7075 13.1225 47.755 13.8676C47.1056 14.3936 46.283 14.7443 45.4603 14.9197C43.7285 15.2703 41.9534 15.3141 40.1782 14.9635C39.9185 14.9197 39.6154 14.8758 39.3556 14.7443C38.5763 14.306 37.797 14.306 36.9744 14.4813C35.4158 14.832 33.8571 15.1388 32.2985 15.4456C31.9954 15.4895 31.7357 15.6648 31.3459 15.8401C32.7315 16.4538 33.987 17.0237 35.2425 17.5496C36.2384 17.988 37.3207 18.3386 38.3165 18.7331C38.8794 18.9523 39.3989 18.8646 39.9618 18.6455C41.1308 18.1633 42.2997 17.6373 43.512 17.2866C45.8933 16.673 48.1014 17.3305 50.0929 18.6893C50.7424 19.1277 51.132 19.8289 50.9589 20.6618C50.7857 21.4946 50.1796 21.9768 49.4435 22.196C48.4477 22.5028 47.4519 22.6343 46.4128 22.3713C45.0274 21.9768 43.6419 21.4946 42.2997 21.0563C41.1741 20.7056 40.0917 20.3111 38.9227 20.0043C40.0051 21.2754 40.6112 22.7219 41.0009 24.3C41.0875 24.6944 41.1741 25.1328 41.1741 25.5273C41.1308 26.7984 39.9618 27.4998 38.966 26.7984C38.3165 26.3601 37.6238 25.7026 37.3207 24.9574C36.8445 23.8178 36.5847 22.5028 36.3249 21.2754C36.1518 20.4426 36.1518 19.6098 36.0652 18.7331C32.1253 17.199 28.3153 15.1826 23.9857 14.8758C23.9424 14.9635 23.8559 15.0073 23.8125 15.095C24.5485 15.6648 25.3279 16.1908 26.0639 16.7606C26.1505 16.8483 26.2804 16.8483 26.4103 16.8921C28.6616 17.1113 30.3935 18.2948 31.8655 20.0043C32.6448 20.9248 32.9046 21.9768 32.6881 23.2041C32.4284 24.7821 30.8264 25.4396 29.6575 24.3438C28.9214 23.6425 28.3153 22.7658 27.7958 21.9329C27.2329 21.0125 26.8 20.0043 26.2371 18.9085C26.367 20.4864 26.5402 21.8891 26.6267 23.3356C26.67 24.3 26.1938 25.1328 25.6309 25.878C24.8949 26.8861 23.6394 26.8423 22.9466 25.7903C22.124 24.5191 21.9075 23.1165 22.4704 21.67C23.0765 20.1796 23.5961 18.6016 24.765 17.4181C24.8516 17.3305 24.8083 16.8921 24.7218 16.8045C23.4662 15.7525 22.2539 14.832 20.4355 14.9635C16.7553 15.2265 13.1618 15.8401 9.69822 17.1552C9.48173 17.2428 9.30856 17.3305 9.04877 17.4181C10.0446 17.8127 10.9105 18.1633 11.8197 18.514C13.768 16.5853 16.106 15.9278 18.747 16.3223C19.6562 16.4538 20.5221 16.7606 20.9984 17.7249C21.5179 18.777 21.3447 19.7413 20.219 20.1358C19.4397 20.3988 18.6171 20.4426 17.7944 20.5303C17.3182 20.5742 16.842 20.4426 16.3225 20.355C15.8462 20.3111 15.4132 20.2235 14.8936 20.2673C15.1534 20.3988 15.3699 20.5303 15.6297 20.6618C18.0975 21.8891 20.0458 23.5986 21.0417 26.2724C21.2581 26.8423 21.388 27.3683 21.0849 27.9381C20.4788 29.1216 19.2232 29.3846 18.1841 28.3764ZM25.5011 18.9961C25.0248 20.1358 25.198 21.4946 24.7218 22.6782C24.6352 22.6782 24.5053 22.6343 24.4187 22.6343C24.462 21.5385 24.5053 20.4426 24.5485 19.3468C24.5053 19.3468 24.4187 19.303 24.3754 19.303C23.9424 20.4864 23.4229 21.6261 23.0765 22.8535C22.8168 23.7301 23.1631 24.563 23.6394 25.3081C24.0723 25.9656 24.7218 26.0095 25.1114 25.352C25.5011 24.7383 25.8907 24.0808 25.8907 23.3794C25.9774 21.9329 25.8041 20.4864 25.7609 19.04C25.6743 18.9961 25.5876 18.9961 25.5011 18.9961ZM27.4927 18.0756C28.3586 19.0838 29.2245 20.0043 30.0038 20.9248C30.177 21.1001 30.2203 21.3632 30.3068 21.5823C30.2203 21.6261 30.1337 21.67 30.0471 21.7576C29.2245 20.8371 28.4019 19.9605 27.5793 19.04C27.4927 19.0838 27.4493 19.1714 27.3628 19.2153C28.0555 20.355 28.7049 21.5385 29.441 22.6782C29.6142 22.985 29.9172 23.248 30.177 23.4672C30.8697 24.0369 31.4759 23.774 31.649 22.8973C31.7789 22.0644 31.6057 21.3193 31.0862 20.6179C30.2203 19.4783 28.9214 18.7331 27.4927 18.0756ZM39.0093 23.774C38.4898 22.6781 37.9702 21.5823 37.4074 20.5303C37.3207 20.5742 37.2775 20.5742 37.1909 20.6179C37.2342 21.9768 37.4939 23.2918 38.1 24.4753C38.3598 25.0451 38.8361 25.4834 39.2691 25.9218C39.3989 26.0533 39.7886 26.1409 39.9185 26.0533C40.0917 25.9218 40.2215 25.5712 40.1782 25.3958C39.9185 24.3876 39.5721 23.3356 39.2258 22.3275C39.0959 21.9329 38.7928 21.5823 38.5763 21.2316C38.7495 22.0644 39.3989 22.7658 39.0093 23.774ZM41.5637 18.9085C42.9925 19.2592 44.5511 18.9961 45.8933 19.8289C44.5078 19.7851 43.1224 19.7851 41.6503 19.7413C41.8668 19.8728 41.9534 19.9605 42.0399 20.0043C43.6852 20.5303 45.2872 21.1001 46.9324 21.4946C47.6251 21.67 48.3611 21.4508 49.0971 21.3632C49.5734 21.2754 50.0064 21.0563 50.0929 20.5303C50.2228 19.9605 49.8331 19.6098 49.4002 19.3468C48.058 18.4263 46.586 18.0318 45.0274 18.0318C43.8151 17.9441 42.6894 18.4263 41.5637 18.9085ZM33.7705 13.3855C34.2901 12.1143 34.8529 10.8432 35.3725 9.61585C35.459 9.65965 35.5456 9.70351 35.6323 9.7473C35.3292 10.887 35.0261 11.9828 34.6797 13.2101C35.7621 12.0705 36.7146 10.9308 37.061 9.44048C37.2342 8.69533 37.1043 8.03784 36.628 7.468C36.4981 7.29269 36.2384 7.11732 36.1085 7.16118C35.3292 7.24883 34.6364 7.51186 34.2468 8.257C33.7272 9.26518 33.5541 10.3171 33.5108 11.413C33.5108 12.0705 33.5108 12.728 33.5108 13.3855C33.6406 13.3855 33.7272 13.3855 33.7705 13.3855ZM40.6545 13.9991C42.2564 13.9553 43.8151 13.9991 45.417 13.8676C45.9365 13.8238 46.4561 13.6047 46.8891 13.3417C47.1488 13.2101 47.4086 12.8157 47.4086 12.5089C47.4086 12.2896 47.0623 12.0267 46.8025 11.8513C46.586 11.7198 46.283 11.676 46.0665 11.6321C44.3779 11.5445 42.7327 11.7198 41.1308 12.2896C40.6545 12.465 40.2215 12.8157 39.7886 13.0348C39.7886 13.0786 39.8319 13.1225 39.8319 13.2101C41.2606 12.9472 42.7327 12.5526 44.2048 12.7718C44.2048 12.8157 44.2048 12.9033 44.2481 12.9472C42.9492 13.2101 41.6503 13.4732 40.3515 13.7361C40.3515 13.78 40.3515 13.8676 40.3515 13.9115C40.3947 13.9553 40.5246 13.9991 40.6545 13.9991ZM26.67 12.9033C27.4927 12.0267 28.272 11.15 29.0946 10.3171C29.1379 10.361 29.2245 10.4049 29.2678 10.4487C28.8349 11.15 28.4019 11.8952 27.8823 12.6842C29.1812 11.939 30.0471 10.887 30.6966 9.65965C30.9563 9.17752 30.4801 8.60768 29.9172 8.78299C29.3544 8.95836 28.6616 9.22132 28.3153 9.65965C27.5793 10.624 27.0597 11.7636 26.4536 12.8157C26.5402 12.8157 26.6267 12.8595 26.67 12.9033ZM25.9774 6.98581C26.8865 6.76667 27.839 6.5475 28.7482 6.24067C29.2245 6.06534 29.7007 5.75851 30.0471 5.364C30.2636 5.10101 30.4801 4.575 30.3502 4.31201C30.2203 4.04901 29.7007 3.87368 29.3544 3.87368C28.1854 3.87368 27.0597 4.22434 26.1072 4.92567C25.5444 5.32017 25.1547 5.93383 24.6785 6.45983C24.7218 6.50367 24.7218 6.5475 24.765 6.5475C25.934 6.10917 27.103 5.67084 28.272 5.18867C28.3153 5.27634 28.3586 5.40784 28.4019 5.4955C27.5793 5.93384 26.7567 6.416 25.8907 6.85436C25.934 6.89816 25.9774 6.94202 25.9774 6.98581ZM20.9984 8.257C21.0849 8.257 21.1282 8.21314 21.2148 8.21314C21.0849 6.72283 20.955 5.2325 20.8252 3.74218C20.9117 3.74218 20.9984 3.74218 21.1282 3.69834C21.3014 4.79417 21.4746 5.84617 21.691 6.98581C22.5137 5.53934 22.0374 2.07651 20.9117 0.980682C20.4788 0.54235 19.9593 0.67385 19.7428 1.24368C19.4397 2.12035 19.483 2.99701 19.6995 3.87368C20.0458 5.18867 20.4788 6.50367 20.8684 7.81868C20.8684 7.99398 20.955 8.12549 20.9984 8.257ZM16.842 9.52813C15.9327 8.38852 12.0361 9.61585 10.8239 10.8432C12.1661 10.624 13.3783 9.96646 14.7638 10.0542C14.3308 10.3171 13.8978 10.4925 13.4649 10.6678C13.032 10.8432 12.5557 11.0185 12.0361 11.1938C13.8113 11.7198 15.976 10.9308 16.842 9.52813ZM6.40774 12.0267C6.45104 11.9828 6.49433 11.9828 6.53763 11.939C6.27785 10.9746 6.01808 10.0103 5.71501 9.04601C5.80161 9.00215 5.88819 8.95836 6.01808 8.9145C6.40774 9.83502 6.79741 10.7993 7.23037 11.7198C7.23037 10.9308 7.23037 10.1418 6.92727 9.52813C6.58092 8.78299 5.97478 8.21314 5.41194 7.55565C5.32535 7.468 4.97899 7.42414 4.8924 7.51186C4.76251 7.59951 4.71921 7.90633 4.76251 8.08163C5.32535 9.44048 5.88819 10.7117 6.40774 12.0267ZM18.1841 19.5221C18.747 19.5221 19.3098 19.4345 19.8293 19.2153C20.4355 18.9961 20.4788 18.6016 20.1757 18.0756C19.9159 17.5496 19.4397 17.3743 18.8768 17.2428C16.9718 16.8045 15.1967 17.3305 13.5082 18.1195C13.2485 18.251 13.0752 18.4702 12.8587 18.6455C13.1185 18.7331 13.335 18.777 13.5082 18.7331C14.8504 18.514 16.1925 18.2948 17.5347 18.0318C18.0109 17.9441 18.4439 17.9441 18.9635 18.2948C17.6213 18.5578 16.4523 18.8208 15.2834 19.0838C15.2834 19.1277 15.2834 19.2153 15.2834 19.2592C16.3224 19.3468 17.2316 19.5221 18.1841 19.5221ZM19.9593 27.8066C20.3056 27.6313 20.5221 27.193 20.3056 26.7984C19.7861 25.7903 19.2665 24.7821 18.6604 23.8616C18.3573 23.4233 17.7944 23.1165 17.3615 22.7658C17.3182 22.8096 17.3182 22.8096 17.2749 22.8535C17.7944 23.7301 18.3573 24.6068 18.9202 25.5273C18.8335 25.5712 18.747 25.6149 18.6604 25.6588C17.7512 24.6506 17.1451 23.3794 15.8462 22.6782C16.4523 23.9493 17.0584 25.2205 17.7512 26.4478C18.0542 26.9738 18.5738 27.4121 19.05 27.7628C19.2665 27.982 19.6995 27.9381 19.9593 27.8066Z" fill="#526E3E"></path>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="body4_rightsb_name">
+                            <span>AN TOÀN</span>
+                        </div>
+                        <div>
+                            Lorem ipsum dolor sit amet consecte. Nullam non laoreets porttitor pretium justo venenet. Feugiat parturient sed at aliquet convallis convallis. Facilisi sed sagittis lacus quis odio.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="body5">
+        <div class="body5_top">
+            <div class="text-center">
+                <span>Chăm sóc da</span>
+            </div>
+            <div class="icon-leaf-center">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+            </div>
+
+        </div>
+        <div class="body5_product">
+            <a href="" style="text-decoration:none;color:black;">
+                <div class="product_item">
+                    <div class="inner_image">
+                        <div class="product_status" style="display:flex;align-items:center; margin:5px;">
+                            <span class="onsale" style="font-size:12px;">
+                                -20%
+                            </span>
+                        </div>
+                        <img nh-lazy="image" class="img-fluid" alt="Serum Chấm Mụn GUO – Acne Spot Treatment Serum GUO" src="https://cdn2491.cdn-template-4s.com/thumbs/san-pham/cauchuyenthaomoc/dau-tay-trang-tram-tra-guo-vo-moi_thumb_500.webp" style="">
+                    </div>
+
+                    <div class="inner_content">
+                        <h4 class="product_title">
+                            Serum Chấm Mụn GUO – Acne Spot Treatment Serum GUO
+                        </h4>
+                        <div class="price">
+                            <span class="price_amount">
+                                280,000 Đ
+                            </span>
+                            <span class="price-amount_old-price">
+                                350,000 Đ
+                            </span>
+                        </div>
+                        <div class="btn-product-action">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="white">
+                                </path>
+                                <path d="M8.25 22.5C9.2165 22.5 10 21.7165 10 20.75C10 19.7835 9.2165 19 8.25 19C7.2835 19 6.5 19.7835 6.5 20.75C6.5 21.7165 7.2835 22.5 8.25 22.5Z" fill="white">
+                                </path>
+                                <path d="M4.84 3.94L4.64 6.39C4.6 6.86 4.97 7.25 5.44 7.25H20.75C21.17 7.25 21.52 6.93 21.55 6.51C21.68 4.74 20.33 3.3 18.56 3.3H6.27C6.17 2.86 5.97 2.44 5.66 2.09C5.16 1.56 4.46 1.25 3.74 1.25H2C1.59 1.25 1.25 1.59 1.25 2C1.25 2.41 1.59 2.75 2 2.75H3.74C4.05 2.75 4.34 2.88 4.55 3.1C4.76 3.33 4.86 3.63 4.84 3.94Z" fill="white">
+                                </path>
+                                <path d="M20.51 8.75H5.16999C4.74999 8.75 4.40999 9.07 4.36999 9.48L4.00999 13.83C3.86999 15.54 5.20999 17 6.91999 17H18.04C19.54 17 20.86 15.77 20.97 14.27L21.3 9.6C21.34 9.14 20.98 8.75 20.51 8.75Z" fill="white">
+                                </path>
+                            </svg>
+                            <span style="margin-left:10px;">Thêm vào giỏ hàng</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" style="text-decoration:none;color:black;">
+                <div class="product_item">
+                    <div class="inner_image">
+                        <div class="product_status" style="display:flex;align-items:center; margin:5px;">
+                            <span class="onsale" style="font-size:12px;">
+                                -42%
+                            </span>
+                        </div>
+                        <img nh-lazy="image" class="img-fluid" alt="Nước Tẩy Trang B5 GUO – Calming Micellar Cleansing Water GUO sạch sâu, làm dịu da" src="https://cdn2491.cdn-template-4s.com/thumbs/san-pham/cauchuyenthaomoc/serum-duong-trang-guo-2024_thumb_500.webp" style="">
+                    </div>
+
+                    <div class="inner_content">
+                        <h4 class="product_title">
+                            Nước Tẩy Trang B5 GUO – Calming Micellar ...
+                        </h4>
+                        <div class="price">
+                            <span class="price_amount">
+                                260,000 Đ
+                            </span>
+                            <span class="price-amount_old-price">
+                                450,000 Đ
+                            </span>
+                        </div>
+                        <div class="btn-product-action">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="white">
+                                </path>
+                                <path d="M8.25 22.5C9.2165 22.5 10 21.7165 10 20.75C10 19.7835 9.2165 19 8.25 19C7.2835 19 6.5 19.7835 6.5 20.75C6.5 21.7165 7.2835 22.5 8.25 22.5Z" fill="white">
+                                </path>
+                                <path d="M4.84 3.94L4.64 6.39C4.6 6.86 4.97 7.25 5.44 7.25H20.75C21.17 7.25 21.52 6.93 21.55 6.51C21.68 4.74 20.33 3.3 18.56 3.3H6.27C6.17 2.86 5.97 2.44 5.66 2.09C5.16 1.56 4.46 1.25 3.74 1.25H2C1.59 1.25 1.25 1.59 1.25 2C1.25 2.41 1.59 2.75 2 2.75H3.74C4.05 2.75 4.34 2.88 4.55 3.1C4.76 3.33 4.86 3.63 4.84 3.94Z" fill="white">
+                                </path>
+                                <path d="M20.51 8.75H5.16999C4.74999 8.75 4.40999 9.07 4.36999 9.48L4.00999 13.83C3.86999 15.54 5.20999 17 6.91999 17H18.04C19.54 17 20.86 15.77 20.97 14.27L21.3 9.6C21.34 9.14 20.98 8.75 20.51 8.75Z" fill="white">
+                                </path>
+                            </svg>
+                            <span style="margin-left:10px;">Thêm vào giỏ hàng</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" style="text-decoration:none;color:black;">
+                <div class="product_item">
+                    <div class="inner_image">
+                        <div class="product_status" style="display:flex;align-items:center; margin:5px;">
+                            <span class="onsale" style="font-size:12px;">
+                                -43%
+                            </span>
+                        </div>
+                        <img nh-lazy="image" class="img-fluid" alt="Dầu Tẩy Trang Tràm Trà GUO – Deep Cleansing Oil sạch sâu, ngừa mụn hiệu quả" src="https://cdn2491.cdn-template-4s.com/thumbs/san-pham/cauchuyenthaomoc/serum-duong-trang-da-guo-fullsize-30ml-700x700_thumb_500.webp" style="">
+                    </div>
+
+                    <div class="inner_content">
+                        <h4 class="product_title">
+                            Dầu Tẩy Trang Tràm Trà GUO – Deep Cleansing ...
+                        </h4>
+                        <div class="price">
+                            <span class="price_amount">
+                                200,000 Đ
+                            </span>
+                            <span class="price-amount_old-price">
+                                352,000 Đ
+                            </span>
+                        </div>
+                        <div class="btn-product-action">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="white">
+                                </path>
+                                <path d="M8.25 22.5C9.2165 22.5 10 21.7165 10 20.75C10 19.7835 9.2165 19 8.25 19C7.2835 19 6.5 19.7835 6.5 20.75C6.5 21.7165 7.2835 22.5 8.25 22.5Z" fill="white">
+                                </path>
+                                <path d="M4.84 3.94L4.64 6.39C4.6 6.86 4.97 7.25 5.44 7.25H20.75C21.17 7.25 21.52 6.93 21.55 6.51C21.68 4.74 20.33 3.3 18.56 3.3H6.27C6.17 2.86 5.97 2.44 5.66 2.09C5.16 1.56 4.46 1.25 3.74 1.25H2C1.59 1.25 1.25 1.59 1.25 2C1.25 2.41 1.59 2.75 2 2.75H3.74C4.05 2.75 4.34 2.88 4.55 3.1C4.76 3.33 4.86 3.63 4.84 3.94Z" fill="white">
+                                </path>
+                                <path d="M20.51 8.75H5.16999C4.74999 8.75 4.40999 9.07 4.36999 9.48L4.00999 13.83C3.86999 15.54 5.20999 17 6.91999 17H18.04C19.54 17 20.86 15.77 20.97 14.27L21.3 9.6C21.34 9.14 20.98 8.75 20.51 8.75Z" fill="white">
+                                </path>
+                            </svg>
+                            <span style="margin-left:10px;">Thêm vào giỏ hàng</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" style="text-decoration:none;color:black;">
+                <div class="product_item">
+                    <div class="inner_image">
+                        <div class="product_status" style="display:flex;align-items:center; margin:5px;">
+                            <span class="onsale" style="font-size:12px;">
+                                -25%
+                            </span>
+                        </div>
+                        <img nh-lazy="image" class="img-fluid" alt="Toner Tràm Cúc GUO – Refresh Oil Control Toner GUO" src="https://cdn2491.cdn-template-4s.com/thumbs/san-pham/cauchuyenthaomoc/serum-tri-mun-acnes-treatment-guo-my-pham-xanh-sach_thumb_500.jpg" style="">
+                    </div>
+
+                    <div class="inner_content">
+                        <h4 class="product_title">
+                            Toner Tràm Cúc GUO – Refresh Oil Control Toner GUO
+                        </h4>
+                        <div class="price">
+                            <span class="price_amount">
+                                450,000 Đ
+                            </span>
+                            <span class="price-amount_old-price">
+                                600,000 Đ
+                            </span>
+                        </div>
+                        <div class="btn-product-action">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="white">
+                                </path>
+                                <path d="M8.25 22.5C9.2165 22.5 10 21.7165 10 20.75C10 19.7835 9.2165 19 8.25 19C7.2835 19 6.5 19.7835 6.5 20.75C6.5 21.7165 7.2835 22.5 8.25 22.5Z" fill="white">
+                                </path>
+                                <path d="M4.84 3.94L4.64 6.39C4.6 6.86 4.97 7.25 5.44 7.25H20.75C21.17 7.25 21.52 6.93 21.55 6.51C21.68 4.74 20.33 3.3 18.56 3.3H6.27C6.17 2.86 5.97 2.44 5.66 2.09C5.16 1.56 4.46 1.25 3.74 1.25H2C1.59 1.25 1.25 1.59 1.25 2C1.25 2.41 1.59 2.75 2 2.75H3.74C4.05 2.75 4.34 2.88 4.55 3.1C4.76 3.33 4.86 3.63 4.84 3.94Z" fill="white">
+                                </path>
+                                <path d="M20.51 8.75H5.16999C4.74999 8.75 4.40999 9.07 4.36999 9.48L4.00999 13.83C3.86999 15.54 5.20999 17 6.91999 17H18.04C19.54 17 20.86 15.77 20.97 14.27L21.3 9.6C21.34 9.14 20.98 8.75 20.51 8.75Z" fill="white">
+                                </path>
+                            </svg>
+                            <span style="margin-left:10px;">Thêm vào giỏ hàng</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="body6">
+        <div class="body6_top">
+            <div class="text-center">
+                <span>Dầu xả</span>
+            </div>
+            <div class="icon-leaf-center">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+            </div>
+
+        </div>
+        <div class="body6_product">
+            <a href="" style="text-decoration:none;color:black;">
+                <div class="product_item">
+                    <div class="inner_image">
+                        <div class="product_status" style="display:flex;align-items:center; margin:5px;">
+                            <span class="onsale" style="font-size:12px;">
+                                -17%
+                            </span>
+                        </div>
+                        <img nh-lazy="image" class="img-fluid" alt="DẦU GỘI XẢ BIOTIN COLLAGEN PASIORI TRỊ RỤNG VÀ PHỤC HỒI SIÊU MỀM MƯỢT 1000ML" src="https://cdn2491.cdn-template-4s.com/thumbs/san-pham/dau_goi/biotin_collagen_keratin_2_thumb_500.webp" style="">
+                    </div>
+                    <div class="inner_content">
+                        <h4 class="product_title">
+                            DẦU GỘI XẢ BIOTIN COLLAGEN PASIORI TRỊ RỤNG VÀ ...
+                        </h4>
+                        <div class="price">
+                            <span class="price_amount">
+                                250,000 Đ
+                            </span>
+                            <span class="price-amount_old-price">
+                                300,000 Đ
+                            </span>
+                        </div>
+                        <div class="btn-product-action">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="white">
+                                </path>
+                                <path d="M8.25 22.5C9.2165 22.5 10 21.7165 10 20.75C10 19.7835 9.2165 19 8.25 19C7.2835 19 6.5 19.7835 6.5 20.75C6.5 21.7165 7.2835 22.5 8.25 22.5Z" fill="white">
+                                </path>
+                                <path d="M4.84 3.94L4.64 6.39C4.6 6.86 4.97 7.25 5.44 7.25H20.75C21.17 7.25 21.52 6.93 21.55 6.51C21.68 4.74 20.33 3.3 18.56 3.3H6.27C6.17 2.86 5.97 2.44 5.66 2.09C5.16 1.56 4.46 1.25 3.74 1.25H2C1.59 1.25 1.25 1.59 1.25 2C1.25 2.41 1.59 2.75 2 2.75H3.74C4.05 2.75 4.34 2.88 4.55 3.1C4.76 3.33 4.86 3.63 4.84 3.94Z" fill="white">
+                                </path>
+                                <path d="M20.51 8.75H5.16999C4.74999 8.75 4.40999 9.07 4.36999 9.48L4.00999 13.83C3.86999 15.54 5.20999 17 6.91999 17H18.04C19.54 17 20.86 15.77 20.97 14.27L21.3 9.6C21.34 9.14 20.98 8.75 20.51 8.75Z" fill="white">
+                                </path>
+                            </svg>
+                            <span style="margin-left:10px;">Thêm vào giỏ hàng</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" style="text-decoration:none;color:black;">
+                <div class="product_item">
+                    <div class="inner_image">
+                        <div class="product_status" style="display:flex;align-items:center; margin:5px;">
+                            <span class="onsale" style="font-size:12px;">
+                                -20%
+                            </span>
+                        </div>
+                        <img nh-lazy="image" class="img-fluid" alt="Dầu Gội Đầu Biotin Tím" src="https://cdn2491.cdn-template-4s.com/thumbs/san-pham/cauchuyenthaomoc/daugoixabiotin750ml1-1_thumb_500.webp" style="">
+                    </div>
+
+                    <div class="inner_content">
+                        <h4 class="product_title">
+                            Dầu Gội Đầu Biotin Tím
+                        </h4>
+                        <div class="price">
+                            <span class="price_amount">
+                                280,000 Đ
+                            </span>
+                            <span class="price-amount_old-price">
+                                350,000 Đ
+                            </span>
+                        </div>
+                        <div class="btn-product-action">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="white">
+                                </path>
+                                <path d="M8.25 22.5C9.2165 22.5 10 21.7165 10 20.75C10 19.7835 9.2165 19 8.25 19C7.2835 19 6.5 19.7835 6.5 20.75C6.5 21.7165 7.2835 22.5 8.25 22.5Z" fill="white">
+                                </path>
+                                <path d="M4.84 3.94L4.64 6.39C4.6 6.86 4.97 7.25 5.44 7.25H20.75C21.17 7.25 21.52 6.93 21.55 6.51C21.68 4.74 20.33 3.3 18.56 3.3H6.27C6.17 2.86 5.97 2.44 5.66 2.09C5.16 1.56 4.46 1.25 3.74 1.25H2C1.59 1.25 1.25 1.59 1.25 2C1.25 2.41 1.59 2.75 2 2.75H3.74C4.05 2.75 4.34 2.88 4.55 3.1C4.76 3.33 4.86 3.63 4.84 3.94Z" fill="white">
+                                </path>
+                                <path d="M20.51 8.75H5.16999C4.74999 8.75 4.40999 9.07 4.36999 9.48L4.00999 13.83C3.86999 15.54 5.20999 17 6.91999 17H18.04C19.54 17 20.86 15.77 20.97 14.27L21.3 9.6C21.34 9.14 20.98 8.75 20.51 8.75Z" fill="white">
+                                </path>
+                            </svg>
+                            <span style="margin-left:10px;">Thêm vào giỏ hàng</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" style="text-decoration:none;color:black;">
+                <div class="product_item">
+                    <div class="inner_image">
+                        <div class="product_status" style="display:flex;align-items:center; margin:5px;">
+                            <span class="onsale" style="font-size:12px;">
+                                -20%
+                            </span>
+                        </div>
+                        <img nh-lazy="image" class="img-fluid" alt="Dầu gội đầu Davines Purifying Shampoo – 1000ml, trị gàu hiệu quả với tinh chất thảo dược" src="https://cdn2491.cdn-template-4s.com/thumbs/san-pham/cauchuyenthaomoc/daugoixabiotinvang500ml1-1_thumb_500.webp" style="">
+                    </div>
+
+                    <div class="inner_content">
+                        <h4 class="product_title">
+                            Dầu gội đầu Davines Purifying Shampoo – ...
+                        </h4>
+                        <div class="price">
+                            <span class="price_amount">
+                                280,000 Đ
+                            </span>
+                            <span class="price-amount_old-price">
+                                350,000 Đ
+                            </span>
+                        </div>
+                        <div class="btn-product-action">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="white">
+                                </path>
+                                <path d="M8.25 22.5C9.2165 22.5 10 21.7165 10 20.75C10 19.7835 9.2165 19 8.25 19C7.2835 19 6.5 19.7835 6.5 20.75C6.5 21.7165 7.2835 22.5 8.25 22.5Z" fill="white">
+                                </path>
+                                <path d="M4.84 3.94L4.64 6.39C4.6 6.86 4.97 7.25 5.44 7.25H20.75C21.17 7.25 21.52 6.93 21.55 6.51C21.68 4.74 20.33 3.3 18.56 3.3H6.27C6.17 2.86 5.97 2.44 5.66 2.09C5.16 1.56 4.46 1.25 3.74 1.25H2C1.59 1.25 1.25 1.59 1.25 2C1.25 2.41 1.59 2.75 2 2.75H3.74C4.05 2.75 4.34 2.88 4.55 3.1C4.76 3.33 4.86 3.63 4.84 3.94Z" fill="white">
+                                </path>
+                                <path d="M20.51 8.75H5.16999C4.74999 8.75 4.40999 9.07 4.36999 9.48L4.00999 13.83C3.86999 15.54 5.20999 17 6.91999 17H18.04C19.54 17 20.86 15.77 20.97 14.27L21.3 9.6C21.34 9.14 20.98 8.75 20.51 8.75Z" fill="white">
+                                </path>
+                            </svg>
+                            <span style="margin-left:10px;">Thêm vào giỏ hàng</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" style="text-decoration:none;color:black;">
+                <div class="product_item">
+                    <div class="inner_image">
+                        <div class="product_status" style="display:flex;align-items:center; margin:5px;">
+                            <span class="onsale" style="font-size:12px;">
+                                -20%
+                            </span>
+                        </div>
+                        <img nh-lazy="image" class="img-fluid" alt="Dầu Gội Sạch Gàu Ngứa – Nấm Da Đầu Bong Tróc Antisol" src="https://cdn2491.cdn-template-4s.com/thumbs/san-pham/cauchuyenthaomoc/z4472778531836_a9ad401c2d522ba26ba1692f798a232b-min_thumb_500.webp" style="">
+                    </div>
+
+                    <div class="inner_content">
+                        <h4 class="product_title">
+                            Dầu Gội Sạch Gàu Ngứa – Nấm Da Đầu Bong Tróc ...
+                        </h4>
+                        <div class="price">
+                            <span class="price_amount">
+                                280,000 Đ
+                            </span>
+                            <span class="price-amount_old-price">
+                                350,000 Đ
+                            </span>
+                        </div>
+                        <div class="btn-product-action">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="white">
+                                </path>
+                                <path d="M8.25 22.5C9.2165 22.5 10 21.7165 10 20.75C10 19.7835 9.2165 19 8.25 19C7.2835 19 6.5 19.7835 6.5 20.75C6.5 21.7165 7.2835 22.5 8.25 22.5Z" fill="white">
+                                </path>
+                                <path d="M4.84 3.94L4.64 6.39C4.6 6.86 4.97 7.25 5.44 7.25H20.75C21.17 7.25 21.52 6.93 21.55 6.51C21.68 4.74 20.33 3.3 18.56 3.3H6.27C6.17 2.86 5.97 2.44 5.66 2.09C5.16 1.56 4.46 1.25 3.74 1.25H2C1.59 1.25 1.25 1.59 1.25 2C1.25 2.41 1.59 2.75 2 2.75H3.74C4.05 2.75 4.34 2.88 4.55 3.1C4.76 3.33 4.86 3.63 4.84 3.94Z" fill="white">
+                                </path>
+                                <path d="M20.51 8.75H5.16999C4.74999 8.75 4.40999 9.07 4.36999 9.48L4.00999 13.83C3.86999 15.54 5.20999 17 6.91999 17H18.04C19.54 17 20.86 15.77 20.97 14.27L21.3 9.6C21.34 9.14 20.98 8.75 20.51 8.75Z" fill="white">
+                                </path>
+                            </svg>
+                            <span style="margin-left:10px;">Thêm vào giỏ hàng</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="body7">
+        <div class="body7_top">
+            <div class="text-center">
+                <span>PHẢN HỒI CỦA KHÁCH HÀNG</span>
+            </div>
+            <div class="icon-leaf-center">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+            </div>
+        </div>
+
+        <div class="body7_bottom">
+            <!-- Slider main container -->
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <div class="body7_item">
+                            <div class="body7_content">
+                                <div class="body7_inter_img">
+                                    <div class="body7_img">
+                                        <img nh-lazy="image" class="img-fluid" alt="NSND Lan Hương " src="https://cdn2491.cdn-template-4s.com/media/khachhang/chup-anh-chan-dung-trong-anh-nang-mat-troi.png" style="border-radius:100%;height:110px;width:110px;">
+                                    </div>
+                                    <div class="body7_note">
+                                        <div class="body7_text">
+                                            Đánh giá
+                                        </div>
+                                        <svg width="101" height="17" viewBox="0 0 101 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.72542 2.48637L10.9721 4.9797C11.1421 5.32678 11.5954 5.6597 11.9779 5.72345L14.2375 6.09887C15.6825 6.3397 16.0225 7.38803 14.9812 8.4222L13.2246 10.1789C12.9271 10.4764 12.7642 11.0501 12.8562 11.461L13.3592 13.6355C13.7558 15.3568 12.8421 16.0226 11.3192 15.123L9.20125 13.8693C8.81875 13.6426 8.18833 13.6426 7.79875 13.8693L5.68083 15.123C4.165 16.0226 3.24417 15.3497 3.64083 13.6355L4.14375 11.461C4.23583 11.0501 4.07292 10.4764 3.77542 10.1789L2.01875 8.4222C0.984584 7.38803 1.3175 6.3397 2.7625 6.09887L5.02208 5.72345C5.3975 5.6597 5.85083 5.32678 6.02083 4.9797L7.2675 2.48637C7.9475 1.13345 9.0525 1.13345 9.72542 2.48637Z" fill="#FFE600" stroke="#FFE600" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M30.7254 2.48637L31.9721 4.9797C32.1421 5.32678 32.5954 5.6597 32.9779 5.72345L35.2375 6.09887C36.6825 6.3397 37.0225 7.38803 35.9812 8.4222L34.2246 10.1789C33.9271 10.4764 33.7642 11.0501 33.8562 11.461L34.3592 13.6355C34.7558 15.3568 33.8421 16.0226 32.3192 15.123L30.2013 13.8693C29.8188 13.6426 29.1883 13.6426 28.7988 13.8693L26.6808 15.123C25.165 16.0226 24.2442 15.3497 24.6408 13.6355L25.1438 11.461C25.2358 11.0501 25.0729 10.4764 24.7754 10.1789L23.0188 8.4222C21.9846 7.38803 22.3175 6.3397 23.7625 6.09887L26.0221 5.72345C26.3975 5.6597 26.8508 5.32678 27.0208 4.9797L28.2675 2.48637C28.9475 1.13345 30.0525 1.13345 30.7254 2.48637Z" fill="#FFE600" stroke="#FFE600" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M51.7254 2.48637L52.9721 4.9797C53.1421 5.32678 53.5954 5.6597 53.9779 5.72345L56.2375 6.09887C57.6825 6.3397 58.0225 7.38803 56.9812 8.4222L55.2246 10.1789C54.9271 10.4764 54.7642 11.0501 54.8562 11.461L55.3592 13.6355C55.7558 15.3568 54.8421 16.0226 53.3192 15.123L51.2013 13.8693C50.8188 13.6426 50.1883 13.6426 49.7988 13.8693L47.6808 15.123C46.165 16.0226 45.2442 15.3497 45.6408 13.6355L46.1438 11.461C46.2358 11.0501 46.0729 10.4764 45.7754 10.1789L44.0188 8.4222C42.9846 7.38803 43.3175 6.3397 44.7625 6.09887L47.0221 5.72345C47.3975 5.6597 47.8508 5.32678 48.0208 4.9797L49.2675 2.48637C49.9475 1.13345 51.0525 1.13345 51.7254 2.48637Z" fill="#FFE600" stroke="#FFE600" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M72.7254 2.48637L73.9721 4.9797C74.1421 5.32678 74.5954 5.6597 74.9779 5.72345L77.2375 6.09887C78.6825 6.3397 79.0225 7.38803 77.9812 8.4222L76.2246 10.1789C75.9271 10.4764 75.7642 11.0501 75.8562 11.461L76.3592 13.6355C76.7558 15.3568 75.8421 16.0226 74.3192 15.123L72.2012 13.8693C71.8187 13.6426 71.1883 13.6426 70.7988 13.8693L68.6808 15.123C67.165 16.0226 66.2442 15.3497 66.6408 13.6355L67.1437 11.461C67.2358 11.0501 67.0729 10.4764 66.7754 10.1789L65.0187 8.4222C63.9846 7.38803 64.3175 6.3397 65.7625 6.09887L68.0221 5.72345C68.3975 5.6597 68.8508 5.32678 69.0208 4.9797L70.2675 2.48637C70.9475 1.13345 72.0525 1.13345 72.7254 2.48637Z" fill="#FFE600" stroke="#FFE600" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M93.7254 2.48637L94.9721 4.9797C95.1421 5.32678 95.5954 5.6597 95.9779 5.72345L98.2375 6.09887C99.6825 6.3397 100.022 7.38803 98.9812 8.4222L97.2246 10.1789C96.9271 10.4764 96.7642 11.0501 96.8562 11.461L97.3592 13.6355C97.7558 15.3568 96.8421 16.0226 95.3192 15.123L93.2013 13.8693C92.8188 13.6426 92.1883 13.6426 91.7988 13.8693L89.6808 15.123C88.165 16.0226 87.2442 15.3497 87.6408 13.6355L88.1438 11.461C88.2358 11.0501 88.0729 10.4764 87.7754 10.1789L86.0188 8.4222C84.9846 7.38803 85.3175 6.3397 86.7625 6.09887L89.0221 5.72345C89.3975 5.6597 89.8508 5.32678 90.0208 4.9797L91.2675 2.48637C91.9475 1.13345 93.0525 1.13345 93.7254 2.48637Z" fill="#FFE600" stroke="#FFE600" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                    </div>
+                                </div>
+                                <div class="body7_inter-contect">
+                                    <div class="body7_name">
+                                        NSND Lan Hương
+                                    </div>
+                                    <div class="body7_description">
+                                        Lorem ipsum dolor sit amet consecte. Nullam non laoreets porttitor pretium justo venenet. Feugiat parturient sed at aliquet convallis convallis. Facilisi sed sagittis lacus quis odio. Lorem ipsum dolor sit amet consecte.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="body7_item">
+                            <div class="body7_content">
+                                <div class="body7_inter_img">
+                                    <div class="body7_img">
+                                        <img nh-lazy="image" class="img-fluid" alt="NSND Lan Hương " src="https://cdn2491.cdn-template-4s.com/media/khachhang/nam-phuong-3-1180x760.jpg" style="border-radius: 100%; height: 110px; width: 110px;">
+                                    </div>
+                                    <div class="body7_note">
+                                        <div class="body7_text">
+                                            Đánh giá
+                                        </div>
+                                        <svg width="101" height="17" viewBox="0 0 101 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.72542 2.48637L10.9721 4.9797C11.1421 5.32678 11.5954 5.6597 11.9779 5.72345L14.2375 6.09887C15.6825 6.3397 16.0225 7.38803 14.9812 8.4222L13.2246 10.1789C12.9271 10.4764 12.7642 11.0501 12.8562 11.461L13.3592 13.6355C13.7558 15.3568 12.8421 16.0226 11.3192 15.123L9.20125 13.8693C8.81875 13.6426 8.18833 13.6426 7.79875 13.8693L5.68083 15.123C4.165 16.0226 3.24417 15.3497 3.64083 13.6355L4.14375 11.461C4.23583 11.0501 4.07292 10.4764 3.77542 10.1789L2.01875 8.4222C0.984584 7.38803 1.3175 6.3397 2.7625 6.09887L5.02208 5.72345C5.3975 5.6597 5.85083 5.32678 6.02083 4.9797L7.2675 2.48637C7.9475 1.13345 9.0525 1.13345 9.72542 2.48637Z" fill="#FFE600" stroke="#FFE600" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M30.7254 2.48637L31.9721 4.9797C32.1421 5.32678 32.5954 5.6597 32.9779 5.72345L35.2375 6.09887C36.6825 6.3397 37.0225 7.38803 35.9812 8.4222L34.2246 10.1789C33.9271 10.4764 33.7642 11.0501 33.8562 11.461L34.3592 13.6355C34.7558 15.3568 33.8421 16.0226 32.3192 15.123L30.2013 13.8693C29.8188 13.6426 29.1883 13.6426 28.7988 13.8693L26.6808 15.123C25.165 16.0226 24.2442 15.3497 24.6408 13.6355L25.1438 11.461C25.2358 11.0501 25.0729 10.4764 24.7754 10.1789L23.0188 8.4222C21.9846 7.38803 22.3175 6.3397 23.7625 6.09887L26.0221 5.72345C26.3975 5.6597 26.8508 5.32678 27.0208 4.9797L28.2675 2.48637C28.9475 1.13345 30.0525 1.13345 30.7254 2.48637Z" fill="#FFE600" stroke="#FFE600" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M51.7254 2.48637L52.9721 4.9797C53.1421 5.32678 53.5954 5.6597 53.9779 5.72345L56.2375 6.09887C57.6825 6.3397 58.0225 7.38803 56.9812 8.4222L55.2246 10.1789C54.9271 10.4764 54.7642 11.0501 54.8562 11.461L55.3592 13.6355C55.7558 15.3568 54.8421 16.0226 53.3192 15.123L51.2013 13.8693C50.8188 13.6426 50.1883 13.6426 49.7988 13.8693L47.6808 15.123C46.165 16.0226 45.2442 15.3497 45.6408 13.6355L46.1438 11.461C46.2358 11.0501 46.0729 10.4764 45.7754 10.1789L44.0188 8.4222C42.9846 7.38803 43.3175 6.3397 44.7625 6.09887L47.0221 5.72345C47.3975 5.6597 47.8508 5.32678 48.0208 4.9797L49.2675 2.48637C49.9475 1.13345 51.0525 1.13345 51.7254 2.48637Z" fill="#FFE600" stroke="#FFE600" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M72.7254 2.48637L73.9721 4.9797C74.1421 5.32678 74.5954 5.6597 74.9779 5.72345L77.2375 6.09887C78.6825 6.3397 79.0225 7.38803 77.9812 8.4222L76.2246 10.1789C75.9271 10.4764 75.7642 11.0501 75.8562 11.461L76.3592 13.6355C76.7558 15.3568 75.8421 16.0226 74.3192 15.123L72.2012 13.8693C71.8187 13.6426 71.1883 13.6426 70.7988 13.8693L68.6808 15.123C67.165 16.0226 66.2442 15.3497 66.6408 13.6355L67.1437 11.461C67.2358 11.0501 67.0729 10.4764 66.7754 10.1789L65.0187 8.4222C63.9846 7.38803 64.3175 6.3397 65.7625 6.09887L68.0221 5.72345C68.3975 5.6597 68.8508 5.32678 69.0208 4.9797L70.2675 2.48637C70.9475 1.13345 72.0525 1.13345 72.7254 2.48637Z" fill="#FFE600" stroke="#FFE600" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M93.7254 2.48637L94.9721 4.9797C95.1421 5.32678 95.5954 5.6597 95.9779 5.72345L98.2375 6.09887C99.6825 6.3397 100.022 7.38803 98.9812 8.4222L97.2246 10.1789C96.9271 10.4764 96.7642 11.0501 96.8562 11.461L97.3592 13.6355C97.7558 15.3568 96.8421 16.0226 95.3192 15.123L93.2013 13.8693C92.8188 13.6426 92.1883 13.6426 91.7988 13.8693L89.6808 15.123C88.165 16.0226 87.2442 15.3497 87.6408 13.6355L88.1438 11.461C88.2358 11.0501 88.0729 10.4764 87.7754 10.1789L86.0188 8.4222C84.9846 7.38803 85.3175 6.3397 86.7625 6.09887L89.0221 5.72345C89.3975 5.6597 89.8508 5.32678 90.0208 4.9797L91.2675 2.48637C91.9475 1.13345 93.0525 1.13345 93.7254 2.48637Z" fill="#FFE600" stroke="#FFE600" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                    </div>
+                                </div>
+                                <div class="body7_inter-contect">
+                                    <div class="body7_name">
+                                        NSND Lan Hương
+                                    </div>
+                                    <div class="body7_description">
+                                        Lorem ipsum dolor sit amet consecte. Nullam non laoreets porttitor pretium justo venenet. Feugiat parturient sed at aliquet convallis convallis. Facilisi sed sagittis lacus quis odio. Lorem ipsum dolor sit amet consecte.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="swiper-slide">
+                        <div class="body7_item">
+                            <div class="body7_content">
+                                <div class="body7_inter_img">
+                                    <div class="body7_img">
+                                        <img nh-lazy="image" class="img-fluid" alt="NSND Lan Hương " src="https://cdn2491.cdn-template-4s.com/media/khachhang/chup-anh-chan-dung-trong-anh-nang-mat-troi.png" style="border-radius: 100%; height: 110px; width: 110px;">
+                                    </div>
+                                    <div class="body7_note">
+                                        <div class="body7_text">
+                                            Đánh giá
+                                        </div>
+                                        <svg width="101" height="17" viewBox="0 0 101 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.72542 2.48637L10.9721 4.9797C11.1421 5.32678 11.5954 5.6597 11.9779 5.72345L14.2375 6.09887C15.6825 6.3397 16.0225 7.38803 14.9812 8.4222L13.2246 10.1789C12.9271 10.4764 12.7642 11.0501 12.8562 11.461L13.3592 13.6355C13.7558 15.3568 12.8421 16.0226 11.3192 15.123L9.20125 13.8693C8.81875 13.6426 8.18833 13.6426 7.79875 13.8693L5.68083 15.123C4.165 16.0226 3.24417 15.3497 3.64083 13.6355L4.14375 11.461C4.23583 11.0501 4.07292 10.4764 3.77542 10.1789L2.01875 8.4222C0.984584 7.38803 1.3175 6.3397 2.7625 6.09887L5.02208 5.72345C5.3975 5.6597 5.85083 5.32678 6.02083 4.9797L7.2675 2.48637C7.9475 1.13345 9.0525 1.13345 9.72542 2.48637Z" fill="#FFE600" stroke="#FFE600" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M30.7254 2.48637L31.9721 4.9797C32.1421 5.32678 32.5954 5.6597 32.9779 5.72345L35.2375 6.09887C36.6825 6.3397 37.0225 7.38803 35.9812 8.4222L34.2246 10.1789C33.9271 10.4764 33.7642 11.0501 33.8562 11.461L34.3592 13.6355C34.7558 15.3568 33.8421 16.0226 32.3192 15.123L30.2013 13.8693C29.8188 13.6426 29.1883 13.6426 28.7988 13.8693L26.6808 15.123C25.165 16.0226 24.2442 15.3497 24.6408 13.6355L25.1438 11.461C25.2358 11.0501 25.0729 10.4764 24.7754 10.1789L23.0188 8.4222C21.9846 7.38803 22.3175 6.3397 23.7625 6.09887L26.0221 5.72345C26.3975 5.6597 26.8508 5.32678 27.0208 4.9797L28.2675 2.48637C28.9475 1.13345 30.0525 1.13345 30.7254 2.48637Z" fill="#FFE600" stroke="#FFE600" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M51.7254 2.48637L52.9721 4.9797C53.1421 5.32678 53.5954 5.6597 53.9779 5.72345L56.2375 6.09887C57.6825 6.3397 58.0225 7.38803 56.9812 8.4222L55.2246 10.1789C54.9271 10.4764 54.7642 11.0501 54.8562 11.461L55.3592 13.6355C55.7558 15.3568 54.8421 16.0226 53.3192 15.123L51.2013 13.8693C50.8188 13.6426 50.1883 13.6426 49.7988 13.8693L47.6808 15.123C46.165 16.0226 45.2442 15.3497 45.6408 13.6355L46.1438 11.461C46.2358 11.0501 46.0729 10.4764 45.7754 10.1789L44.0188 8.4222C42.9846 7.38803 43.3175 6.3397 44.7625 6.09887L47.0221 5.72345C47.3975 5.6597 47.8508 5.32678 48.0208 4.9797L49.2675 2.48637C49.9475 1.13345 51.0525 1.13345 51.7254 2.48637Z" fill="#FFE600" stroke="#FFE600" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M72.7254 2.48637L73.9721 4.9797C74.1421 5.32678 74.5954 5.6597 74.9779 5.72345L77.2375 6.09887C78.6825 6.3397 79.0225 7.38803 77.9812 8.4222L76.2246 10.1789C75.9271 10.4764 75.7642 11.0501 75.8562 11.461L76.3592 13.6355C76.7558 15.3568 75.8421 16.0226 74.3192 15.123L72.2012 13.8693C71.8187 13.6426 71.1883 13.6426 70.7988 13.8693L68.6808 15.123C67.165 16.0226 66.2442 15.3497 66.6408 13.6355L67.1437 11.461C67.2358 11.0501 67.0729 10.4764 66.7754 10.1789L65.0187 8.4222C63.9846 7.38803 64.3175 6.3397 65.7625 6.09887L68.0221 5.72345C68.3975 5.6597 68.8508 5.32678 69.0208 4.9797L70.2675 2.48637C70.9475 1.13345 72.0525 1.13345 72.7254 2.48637Z" fill="#FFE600" stroke="#FFE600" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M93.7254 2.48637L94.9721 4.9797C95.1421 5.32678 95.5954 5.6597 95.9779 5.72345L98.2375 6.09887C99.6825 6.3397 100.022 7.38803 98.9812 8.4222L97.2246 10.1789C96.9271 10.4764 96.7642 11.0501 96.8562 11.461L97.3592 13.6355C97.7558 15.3568 96.8421 16.0226 95.3192 15.123L93.2013 13.8693C92.8188 13.6426 92.1883 13.6426 91.7988 13.8693L89.6808 15.123C88.165 16.0226 87.2442 15.3497 87.6408 13.6355L88.1438 11.461C88.2358 11.0501 88.0729 10.4764 87.7754 10.1789L86.0188 8.4222C84.9846 7.38803 85.3175 6.3397 86.7625 6.09887L89.0221 5.72345C89.3975 5.6597 89.8508 5.32678 90.0208 4.9797L91.2675 2.48637C91.9475 1.13345 93.0525 1.13345 93.7254 2.48637Z" fill="#FFE600" stroke="#FFE600" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                    </div>
+                                </div>
+                                <div class="body7_inter-contect">
+                                    <div class="body7_name">
+                                        NSND Lan Hương
+                                    </div>
+                                    <div class="body7_description">
+                                        Lorem ipsum dolor sit amet consecte. Nullam non laoreets porttitor pretium justo venenet. Feugiat parturient sed at aliquet convallis convallis. Facilisi sed sagittis lacus quis odio. Lorem ipsum dolor sit amet consecte.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pagination -->
+                <div class="swiper-pagination"></div>
+                <div class="swiper-scrollbar" style="height:0;"></div>
+            </div>
+        </div>
+
+        <!-- Swiper JS -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+        <!-- Initialize Swiper -->
+        <script>
+            const swiper = new Swiper('.swiper', {
+                // Đặt direction là 'horizontal' để trượt ngang
+                direction: 'horizontal',
+                loop: true,
+
+                // Pagination
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+
+                // Navigation arrows
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+
+                // Scrollbar
+                scrollbar: {
+                    el: '.swiper-scrollbar',
+                },
+            });
+        </script>
+    </div>
+
+    <div class="body8">
+        <div class="body8_top">
+            <div class="text-center">
+                <span>Kiến Thức Hữu Ích</span>
+            </div>
+            <div class="icon-leaf-center">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+            </div>
+        </div>
+
+        <div class="body8_bottom">
+            <a href="" style="text-decoration:none">
+                <div class="body8_bottom_article-item">
+                    <div class="body8_bottom_inner_image">
+                        <img nh-lazy="image" class="img-fluid" alt="5 CÁCH TRỊ GÀU BẰNG DẦU DỪA CỰC HIỆU QUẢ TẠI NHÀ MÀ AI CŨNG CÓ THỂ ÁP DỤNG (1)" src="https://cdn2491.cdn-template-4s.com/thumbs/dau-goi-thao-duoc-gung-dua-huu-co-co-cay-hoa-la-co-tot-khong_79c79953ac9a49ec95cc2871e33570b8_master_thumb_500.webp" style=" width: 280px; height: 210px;">
+                    </div>
+                    <div class="inner_content">
+                        <div style="margin-bottom:10px;font-weight:700;color:black">
+                            <span>
+                                5 CÁCH TRỊ GÀU BẰNG DẦU DỪA CỰC HIỆU QUẢ TẠI ...
+                            </span>
+                        </div>
+                        <div style="font-size: 12px; color: #959595; margin-bottom: 10px;">
+                            24/05/2024
+                        </div>
+                        <div style="color:black;">
+                            Xem Thêm
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" style="text-decoration:none">
+                <div class="body8_bottom_article-item">
+                    <div class="body8_bottom_inner_image">
+                        <img nh-lazy="image" class="img-fluid" alt="Tìm hiểu sơ lược về dầu gội thảo mộc" src="https://cdn2491.cdn-template-4s.com/thumbs/164c6ba610f2d6ac8fe3_thumb_500.webp" style="width: 280px; height: 210px;">
+                    </div>
+                    <div class="inner_content">
+                        <div style="margin-bottom:10px;font-weight:700;color:black">
+                            <span>
+                                Tìm hiểu sơ lược về dầu gội thảo mộc
+                            </span>
+                        </div>
+                        <div style="font-size: 12px; color: #959595; margin-bottom: 10px;">
+                            24/05/2024
+                        </div>
+                        <div style="color:black;">
+                            Xem Thêm
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" style="text-decoration:none">
+                <div class="body8_bottom_article-item">
+                    <div class="body8_bottom_inner_image">
+                        <img nh-lazy="image" class="img-fluid" alt="Lợi ích của việc sử dụng dầu gội thảo dược trị rụng tóc" src="https://cdn2491.cdn-template-4s.com/thumbs/maxresdefault_1df9892e56_thumb_500.webp" style="width: 280px; height: 210px;">
+                    </div>
+                    <div class="inner_content">
+                        <div style="margin-bottom:10px;font-weight:700;color:black">
+                            <span>
+                                Lợi ích của việc sử dụng dầu gội thảo dược trị rụng tóc
+                            </span>
+                        </div>
+                        <div style="font-size: 12px; color: #959595; margin-bottom: 10px;">
+                            24/05/2024
+                        </div>
+                        <div style="color:black;">
+                            Xem Thêm
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="" style="text-decoration:none">
+                <div class="body8_bottom_article-item">
+                    <div class="body8_bottom_inner_image">
+                        <img nh-lazy="image" class="img-fluid" alt="Dầu gội dược liệu cho nam giúp dưỡng tóc, da đầu, giảm gãy rụng" src="https://cdn2491.cdn-template-4s.com/thumbs/dantri-edit-1310docx-1665660586146_thumb_500.webp" style="width: 280px; height: 210px;">
+                    </div>
+                    <div class="inner_content">
+                        <div style="margin-bottom:10px;font-weight:700;color:black">
+                            <span>
+                                Dầu gội dược liệu cho nam giúp dưỡng tóc, da đầu, giảm gãy rụng
+                            </span>
+                        </div>
+                        <div style="font-size: 12px; color: #959595; margin-bottom: 10px;">
+                            24/05/2024
+                        </div>
+                        <div style="color:black;">
+                            Xem Thêm
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="body9">
+        <div class="body9_top">
+            <div class="text-center">
+                <span>Đối tác khách hàng</span>
+            </div>
+            <div class="icon-leaf-center">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+                <img nh-lazy="image" class="img-fluid" alt="Lợi Ích Bất Ngờ Khi Sử Dụng Dầu Gội Thảo Dược" src="https://cdn2491.cdn-template-4s.com/media/san-pham/cauchuyenthaomoc/icon_layout.png" style="margin-left:15px;">
+            </div>
+        </div>
+        <div class="body9_bottom">
+            <div class="body9_item-img-brand">
+                <img src="https://cdn2491.cdn-template-4s.com/media/san-pham/doitac/client-logo_04-1.png" class="img-fluid" alt="1">
+            </div>
+            <div class="body9_item-img-brand">
+                <img src="https://cdn2491.cdn-template-4s.com/media/san-pham/doitac/client-logo_05.png" class="img-fluid" alt="2">
+            </div>
+            <div class="body9_item-img-brand">
+                <img src="https://cdn2491.cdn-template-4s.com/media/san-pham/doitac/client-logo_04-1.png" class="img-fluid" alt="1">
+            </div>
+            <div class="body9_item-img-brand">
+                <img src="https://cdn2491.cdn-template-4s.com/media/san-pham/doitac/client-logo_03.png" class="img-fluid" alt="4">
+            </div>
+            <div class="body9_item-img-brand">
+                <img src="https://cdn2491.cdn-template-4s.com/media/san-pham/doitac/client-logo_02.png" class="img-fluid" alt="5">
+            </div>
+            <div class="body9_item-img-brand">
+                <img src="https://cdn2491.cdn-template-4s.com/media/san-pham/doitac/client-logo_05.png" class="img-fluid" alt="6">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
