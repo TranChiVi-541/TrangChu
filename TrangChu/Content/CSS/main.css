@@ -3,16 +3,13 @@
         font-family: 'Roboto', sans-serif;
         background-color: #F1F0EC;
     }
-    .header {
-        background-color:white;
-        margin-bottom: 3rem;
-    }
+.header-nav {
+    background-color: white;
+    margin-bottom: 3rem;
+}
     .nav-ui {
         height: 40px;
         padding-top: 20px;
-    }
-    .container {
-        height:600px;
     }
     .nav-text {
         text-decoration: none;
