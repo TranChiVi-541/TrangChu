@@ -56,6 +56,12 @@ namespace TrangChu.Controllers
 
             return View();
         }
+        public ActionResult vechungtoi()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
 
     }
 }

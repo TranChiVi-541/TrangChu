@@ -190,6 +190,7 @@
     <Content Include="Views\Home\sanpham.cshtml" />
     <Content Include="Views\Home\chitietsp.cshtml" />
     <Content Include="Views\Home\TrangChu.cshtml" />
+    <Content Include="Views\Home\vechungtoi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

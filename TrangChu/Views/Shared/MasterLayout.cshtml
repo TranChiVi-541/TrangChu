@@ -1,4 +1,7 @@
 ﻿<style>
+    body{
+        margin:0
+    }
     html {
         font-size: 62.5%;
         line-height: 1.6rem;
@@ -10,8 +13,13 @@
         display: flex;
         justify-items: center;
         justify-content: center;
+<<<<<<< HEAD
         width:1500px;
         height:55px;
+=======
+        height:60px;
+        align-items:center;
+>>>>>>> 2f8aa006bdda11c8e8b9e2b5f2b5ff5d9f72db54
     }
 
     .header__navbar {
@@ -55,10 +63,10 @@
     }
 
     .header .header__search input {
-        background-color: var(--white-color);
         border-radius: 10px;
         border: 1px solid 1px;
         width: 220px;
+        font-size:14px;
     }
     /*phần icon tìm kiếm*/
     .header__search i {
@@ -99,7 +107,6 @@
         display:flex;
     }
     .body1 {
-        height: 500px;
         display: flex;
     }
     .leftsb {
@@ -112,14 +119,14 @@
         padding: 15px;
         line-height: 1.5;
         margin-right: 10px;
-        height: 900px;
+        height: 750px;
     }
     .rightsb {
         background: #fff;
         border-radius: 8px;
         width: 350px;
         margin-top: 20px;
-        height: 900px;
+        height: 750px;
         margin-right: 180px;
         padding: 15px;
     }
@@ -155,7 +162,6 @@
     }
     .logo {
       max-width: 100%;
-      margin-left: 180px;
       margin-top:50px;
     }
     .lienhe {
@@ -170,7 +176,7 @@
         color: #333333;
     }
     .thongtin2 {
-        width: 150px;
+        width: 200px;
         height: 294px;
         background-color: white;
         margin-top: 50px;
@@ -180,15 +186,16 @@
         height: 294px;
         background-color: white;
         margin-top: 50px;
-        margin-left:50px;
+        margin-left:80px;
     }
     .hopthongtin {
         background: #EEF3EA;
         border-radius: 16px;
         padding: 30px;
         width: 320px;
-        height: 240px;
+        margin-bottom:50px;
         margin-top: 50px;
+        margin-left:140px;
     }
     .title{
         color:#233F28;
@@ -236,19 +243,19 @@
                 <nav class="header__navbar">
                     <ul class="header__navbar-list">
                         <li class="header__navbar-item">
-                            <a href="#" class="header__navbar-item-link" style="font-size:20px;">Trang chủ</a>
+                            <a href="~/Home/TrangChu" class="header__navbar-item-link" style="font-size:20px;">Trang chủ</a>
                         </li>
                         <li class="header__navbar-item">
-                            <a href="#" class="header__navbar-item-link" style="font-size:20px" ;>Giới thiệu</a>
+                            <a href="~/Home/vechungtoi" class="header__navbar-item-link" style="font-size:20px" ;>Giới thiệu</a>
                         </li>
                         <li class="header__navbar-item">
-                            <a href="#" class="header__navbar-item-link" style="font-size:20px;">Sản phẩm</a>
+                            <a href="~/Home/sanpham" class="header__navbar-item-link" style="font-size:20px;">Sản phẩm</a>
                         </li>
                         <li class="header__navbar-item">
-                            <a href="#" class="header__navbar-item-link" style="font-size:20px;">Kiến thức</a>
+                            <a href="~/Home/tintuc" class="header__navbar-item-link" style="font-size:20px;">Kiến thức</a>
                         </li>
                         <li class="header__navbar-item">
-                            <a href="#" class="header__navbar-item-link" style="font-size:20px;">Liên hệ</a>
+                            <a href="~/Home/TrangChu" class="header__navbar-item-link" style="font-size:20px;">Liên hệ</a>
                         </li>
                     </ul>
                 </nav>
@@ -271,94 +278,97 @@
         </div>
 
         @* footer *@
-        <div class="footer">
-            <div class="logo">
-                <img class="img-fluid" src="https://cdn2491.cdn-template-4s.com/media/logo/logo.png">
-                <div class="lienhe">
+        <footer class="footer">
+            <div class="grid" style="flex-wrap:nowrap;">
+
+                <div class="logo">
+                    <img class="img-fluid" src="https://cdn2491.cdn-template-4s.com/media/logo/logo.png">
+                    <div class="lienhe">
+                        <div style="color:#233F28;font-size:12px;">
+                            <h1>Dầu gội DANNGOC</h1>
+                        </div>
+
+                        <div class="thongtin">
+                            <p>
+                                <i class="fas fa-home"></i>
+                                &nbsp; 828 Sư Vạn Hạnh, Phường 13, Quận 10, TP. HCM
+                            </p>
+                            <p>
+                                <i class="fas fa-phone-alt"></i>
+                                &nbsp; (028) 3863 2052 - (028) 3862 9232
+                            </p>
+                            <p>
+                                <i class="far fa-envelope"></i>
+                                &nbsp; contact@huflit.edu.vn
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                @* Thông tin 2  *@
+                <div class="thongtin2">
                     <div style="color:#233F28;font-size:12px;">
-                        <h1>Dầu gội DANNGOC</h1>
+                        <h1> Về chúng tôi</h1>
+                        <div>
+                            <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Giới thiệu</a>
+                        </div>
+                        <br />
+                        <div>
+                            <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Đối tác</a>
+                        </div>
+                        <br />
+                        <div>
+                            <a href="" style="color: #333333;font-size:18px;text-decoration:none;">FAQ</a>
+                        </div>
+                        <br />
+                        <div>
+                            <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Tin tức</a>
+                        </div>
+                        <br />
+                        <div>
+                            <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Liên hệ</a>
+                        </div>
                     </div>
+                </div>
+                @* Thông tin 3  *@
+                <div class="thongtin3">
+                    <div style="color:#233F28;font-size:12px;">
+                        <h1> Chính sách</h1>
+                        <div>
+                            <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Chính sách giao hàng</a>
+                        </div>
+                        <br />
+                        <div>
+                            <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Chính sách thanh toán</a>
+                        </div>
+                        <br />
+                        <div>
+                            <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Chính sách đổi trả</a>
+                        </div>
+                        <br />
+                        <div>
+                            <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Chính sách bảo mật</a>
+                        </div>
+                    </div>
+                </div>
+                @* Hộp thông tin *@
+                <div class="hopthongtin">
+                    <div class="title">
+                        <h1> Nhận thông báo</h1>
+                    </div>
+                    <div style="color:#233F28;font-size:20px;">
+                        Đăng ký để nhận những thông tin dịch vụ mới nhất của chúng tôi
+                    </div>
+                    <br />
+                    <input placeholder="Email" type="email" style="height: 48px; width: 100%; border-radius: 8px; background: #EEF3EA;padding: 8.5px 12px; " />
+                    <br />
 
-                    <div class="thongtin">
-                        <p>
-                            <i class="fas fa-home"></i>
-                            &nbsp; 828 Sư Vạn Hạnh, Phường 13, Quận 10, TP. HCM
-                        </p>
-                        <p>
-                            <i class="fas fa-phone-alt"></i>
-                            &nbsp; (028) 3863 2052 - (028) 3862 9232
-                        </p>
-                        <p>
-                            <i class="far fa-envelope"></i>
-                            &nbsp; contact@huflit.edu.vn
-                        </p>
+                    <div style="padding:15px;display:inline-block">
+                        <button class="nutbam" style="border:none;">
+                            GỬI NHẬN TIN
+                        </button>
                     </div>
                 </div>
             </div>
-            @* Thông tin 2  *@
-            <div class="thongtin2">
-                <div style="color:#233F28;font-size:12px;">
-                    <h1> Về chúng tôi</h1>
-                    <div>
-                        <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Giới thiệu</a>
-                    </div>
-                    <br />
-                    <div>
-                        <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Đối tác</a>
-                    </div>
-                    <br />
-                    <div>
-                        <a href="" style="color: #333333;font-size:18px;text-decoration:none;">FAQ</a>
-                    </div>
-                    <br />
-                    <div>
-                        <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Tin tức</a>
-                    </div>
-                    <br />
-                    <div>
-                        <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Liên hệ</a>
-                    </div>
-                </div>
-            </div>
-            @* Thông tin 3  *@
-            <div class="thongtin3">
-                <div style="color:#233F28;font-size:12px;">
-                    <h1> Chính sách</h1>
-                    <div>
-                        <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Chính sách giao hàng</a>
-                    </div>
-                    <br />
-                    <div>
-                        <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Chính sách thanh toán</a>
-                    </div>
-                    <br />
-                    <div>
-                        <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Chính sách đổi trả</a>
-                    </div>
-                    <br />
-                    <div>
-                        <a href="" style="color: #333333;font-size:18px;text-decoration:none;">Chính sách bảo mật</a>
-                    </div>
-                </div>
-            </div>
-            @* Hộp thông tin *@
-            <div class="hopthongtin">
-                <div class="title">
-                    <h1> Nhận thông báo</h1>
-                </div>
-                <div style="color:#233F28;font-size:20px;">
-                    Đăng ký để nhận những thông tin dịch vụ mới nhất của chúng tôi
-                </div>
-                <br />
-                <input placeholder="Email" type="email" style="height: 48px; width: 320px; border-radius: 8px; background: #EEF3EA;padding: 8.5px 12px; " />
-                <br />
-
-                <div style="padding:15px;display:inline-block">
-                    <button class="nutbam" style="border:none;">
-                        GỬI NHẬN TIN
-                    </button>
-                </div>
-            </div>
-        </div>
+        </footer>
 </body>
 

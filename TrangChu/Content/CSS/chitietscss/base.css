@@ -22,8 +22,6 @@ html{
 .grid__row{
     width:100%;
     display: flex;
-    margin-left: -12px;
-    margin-right: -12px;
 }
 /*cột cách sản phẩm*/
 .grid__column-6{
