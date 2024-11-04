@@ -4,7 +4,6 @@
     display: flex;
     justify-items: center;
     justify-content: center;
-    font-family: 'Roboto', sans-serif;
     padding-left: 120px;
     height: 56px;
     width: 1500px;
@@ -100,7 +99,6 @@
     font-size: 1.8rem;
     margin-left: 5px;
     padding-top: 20px;
-    font-family: 'Roboto','sans-serif';
 }
 .bottom__header-item{
     text-decoration: none;
