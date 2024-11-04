@@ -43,6 +43,19 @@ namespace TrangChu.Controllers
 
             return View();
         }
+        public ActionResult sanpham()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult chitietsp()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
 
     }
 }

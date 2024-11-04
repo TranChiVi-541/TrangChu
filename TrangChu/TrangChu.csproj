@@ -143,6 +143,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\CSS\chitietscss\base.css" />
+    <Content Include="Content\CSS\chitietscss\main.css" />
+    <Content Include="Content\CSS\sanphamcss\base.css" />
+    <Content Include="Content\CSS\sanphamcss\main.css" />
     <Content Include="Content\CSS\TrangChu.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -183,6 +187,8 @@
     <Content Include="Views\Home\Test1.cshtml" />
     <Content Include="Views\Home\gioithieu.cshtml" />
     <Content Include="Views\Home\tintuc.cshtml" />
+    <Content Include="Views\Home\sanpham.cshtml" />
+    <Content Include="Views\Home\chitietsp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
