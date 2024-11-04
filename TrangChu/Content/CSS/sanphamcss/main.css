@@ -85,10 +85,11 @@
     background-color: var(--white-color);
     margin-left: 55px;
 }
-.bottom__header-list{
+.bottom__header-list {
     list-style: none;
-    display:flex;
-    font-size:1.8rem;
+    display: flex;
+    font-size: 1.8rem;
+    margin-left: 5px;
 }
 .bottom__header-item{
     text-decoration: none;
